@@ -1,0 +1,31 @@
+Classes
+DunegeonCharacter()
+Values of stats(hp, str, dex, etc), name
+attack
+special → MANA/STAMINA?
+
+Enemy()
+Have Subclasses of actual enemy type like Skeleton, Zombie, Goblin, etc
+BOSS
+
+Hero()
+Have subclasses of Team of heroes (Rogue, Warrior, Wizard/Mage, Cleric/Healer)
+
+UserInterface()
+GUI?
+Possibly JFrame
+Items/Inventory
+http://threerings.github.io/playn-cookbook/control/dungeon/
+GUI of sprite walking around dungeon GUI source code
+
+Dungeon()
+Encounters --Difficulty (# of enemies)
+Battle()→ increase random of higher enemies on higher difficulty
+Targeting, say which enemy you want to attack
+Initiative → Order of turn, find who goes 1st, 2nd bases on DEX or speed
+Agro System, attack highest DPS Character
+Treasures for inventory like boss key
+Map()
+Multiple Dungeons, change when rebooted
+
+
