@@ -6,10 +6,14 @@ special → MANA/STAMINA?
 
 Enemy()
 Have Subclasses of actual enemy type like Skeleton, Zombie, Goblin, etc
-BOSS
+
+
+BOSS()
+
 
 Hero()
 Have subclasses of Team of heroes (Rogue, Warrior, Wizard/Mage, Cleric/Healer)
+
 
 UserInterface()
 GUI?
