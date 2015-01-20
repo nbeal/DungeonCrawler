@@ -1,8 +1,8 @@
 Classes
 DunegeonCharacter()
-Values of stats(hp, str, dex, etc), name
-attack
-special → MANA/STAMINA?
+Values of stats(hp, str, dex, MANA/STAMINA, etc), name
+attack -> done via strategy -> weapons
+special -> done via strategy pattern
 
 Enemy()
 Have Subclasses of actual enemy type like Skeleton, Zombie, Goblin, etc
