@@ -3,6 +3,7 @@
 public class DungeonCharacter
 {
 	private int hitPoints;
+	private int defense;
 	private int strength;
 	private int dextarity;
 	private int stamina;
@@ -14,6 +15,7 @@ public class DungeonCharacter
 	public DungeonCharacter()
 	{
 		this.hitPoints = 0;
+		this.defense = 0;
 		this.strength = 0;
 		this.dextarity = 0;
 		this.stamina = 0;
