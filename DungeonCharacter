@@ -40,3 +40,41 @@ public class DungeonCharacter
 		return -1;
 	}
 }
+public class DungeonCharacter
+{
+	private int hitPoints;
+	private int strength;
+	private int dextarity;
+	private int stamina;
+	//etc)
+	private String name;
+	AttackType attacktype;
+	SpecialAttack special;
+	
+	public DungeonCharacter()
+	{
+		this.hitPoints = 0;
+		this.strength = 0;
+		this.dextarity = 0;
+		this.stamina = 0;
+		this.name = "derp";
+	}
+	public DungeonCharacter(int hp, int str, int dex, int stam, String tempName)
+	{
+		this.hitPoints = hp;
+		this.strength = str;
+		this.dextarity = dex;
+		this.stamina = stam;
+		this.name = tempName;
+	}
+	
+	public int attack()
+	{
+		return attacktype.attack();
+	}
+	
+	public int special()
+	{
+		return special.SpecialAttack();
+	}
+}
