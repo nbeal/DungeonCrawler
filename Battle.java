@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Battle
 {
 	public static void main(String[] args)
@@ -21,6 +23,7 @@ public class Battle
 				if (order[x].isAlive())
 				{
 					//Select Action
+					int action = selectAction(order[x]);
 					//Select Target (print dead if dead)
 						//check alive Status of target
 						//if dead select again
@@ -43,6 +46,22 @@ public class Battle
 	
 	
 	
+	private static int selectAction(DungeonCharacter attacker)
+	{
+		//if (hero object isHero())
+			System.out.println("What will " + attacker.getName() + " do?");
+			System.out.println("1) Attack \n2) Special Attack \n3) Nothing\n");
+			Scanner kb = new Scanner(System.in);
+			int choice = kb.nextInt();
+			while (choice > 3 || choice < 1)
+			{
+				System.out.println("Invalid, pick again");
+				choice = kb.nextInt();
+			}
+		// TODO Auto-generated method stub
+		return choice;
+	}
+
 	private static boolean checkStatus(DungeonCharacter[] dudes)
 	{
 		boolean temp = false;
