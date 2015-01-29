@@ -1,4 +1,4 @@
 public interface SpecialAttack
 {
-	public int SpecialAttack();
+	public void SpecialAttack(DungeonCharacter defender);
 }

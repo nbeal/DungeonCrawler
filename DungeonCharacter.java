@@ -33,9 +33,9 @@ public abstract class DungeonCharacter
 		attacktype.attack(defender);
 	}
 	
-	public int special()
+	public void special(DungeonCharacter defender)
 	{
-		return special.SpecialAttack();
+		special.SpecialAttack(defender);
 	}
 	
 	public void modifyHealth(int damage)
