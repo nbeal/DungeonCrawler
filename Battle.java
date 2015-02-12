@@ -20,17 +20,21 @@ public class Battle
 		{
 			for (int x = 0; x < order.length; x++)
 			{
-				if (order[x].isAlive())
+				if (heroStatus && enemyStatus)
 				{
-					//Select Action
-					int action = selectAction(order[x]);
-					//Select Target (print dead if dead)
-						//check alive Status of target
-						//if dead select again
-					//Damage Target
-				}
-				//check status for each group;
-				//if one is false break
+					if (order[x].isAlive())
+					{
+						//Select Action
+						int action = selectAction(order[x]);
+						//Select Target (print dead if dead)
+						int target = selectTarget(order, x);
+						//Damage Target
+						order[x].attack(order[target]);
+						//check status for each group;
+						heroStatus = checkStatus(heroes);
+						enemyStatus = checkStatus(enemies);
+					}
+				}			
 			}
 		}
 		if (heroStatus)
@@ -46,19 +50,54 @@ public class Battle
 	
 	
 	
+	private static int selectTarget(DungeonCharacter[] order, int x)
+	{
+		// TODO Auto-generated method stub
+		System.out.println("Select a target");
+		for (int i = 0; i < order.length; i++)
+		{
+			if (i == x)
+			{
+				System.out.println(i + ": Self");
+			}
+			else
+			{
+				System.out.print(i + ": " + order[i].getName());
+				if (order[i].isAlive())
+					System.out.println(" Status: Alive");
+				else
+					System.out.println(" Status: Dead");
+			}
+		}
+		Scanner kb = new Scanner(System.in);
+		int choice = kb.nextInt();
+		while (choice > (order.length - 1) || choice < 1)
+		{
+			System.out.println("Invalid, pick again");
+			choice = kb.nextInt();
+		}
+		return choice;
+	}
+
 	private static int selectAction(DungeonCharacter attacker)
 	{
-		//if (hero object isHero())
+		int choice;
+		if (attacker.isHero())
+		{
 			System.out.println("What will " + attacker.getName() + " do?");
 			System.out.println("1) Attack \n2) Special Attack \n3) Nothing\n");
 			Scanner kb = new Scanner(System.in);
-			int choice = kb.nextInt();
+			choice = kb.nextInt();
 			while (choice > 3 || choice < 1)
 			{
 				System.out.println("Invalid, pick again");
 				choice = kb.nextInt();
 			}
-		// TODO Auto-generated method stub
+		}
+		else
+		{
+			choice = (int) (1 + Math.random() * 2);
+		}
 		return choice;
 	}
 
@@ -67,7 +106,7 @@ public class Battle
 		boolean temp = false;
 		for (int x = 0; x < dudes.length; x++ )
 		{
-			temp = (dudes.isAlive() || temp);
+			temp = (dudes[x].isAlive() || temp);
 		}
 		return temp;
 	}
@@ -87,9 +126,44 @@ public class Battle
 			x++;
 		}
 		
-		//TODO sort temp by dextarity
-		
+		int[] intiative = new int[temp.length];
+		for (int y = 0; y < intiative.length; y++)
+		{
+			intiative[y] = (int) (1 + (Math.random() * 20)); 
+			intiative[y] += temp[y].getDex();
+		}
+		temp = MirrorSort(intiative, temp);
 		return temp;
 	}
+
+	 private static DungeonCharacter[] MirrorSort(int[] initative, DungeonCharacter[] characters)
+	  {
+	  		 int sorter = 0;
+	         int sorted = 0;
+	         int place = 1;
+	         DungeonCharacter holdCharacter;
+	         int holdInitative;
+	         while (place < initative.length-1)
+	         {
+	         	sorter = place;
+					sorted = place-1;
+		            while (initative[sorted] < initative[sorter])
+		            {
+		            	holdCharacter = characters[sorted];
+		            	holdInitative = initative[sorted];
+		            	characters[sorted] = characters[sorter];
+		            	initative[sorted] = initative[sorter];
+		            	characters[sorter] = holdCharacter;
+		            	initative[sorter] = holdInitative;
+		            	sorted--;
+		            	sorter--;
+						if (sorted < 0)
+							sorted = sorter;
+							
+		            }	         
+	            place++;
+	         }
+			return characters;
+		}
 
 }
