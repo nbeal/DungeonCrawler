@@ -92,7 +92,7 @@ public abstract class DungeonCharacter
 		return defense + head.getDef() + torso.getDef() + hands.getDef() + legs.getDef() + feet.getDef();
 	}
 	
-	public void equip(Equipment item)
+	public Equipment equip(Equipment item)
 	{
 		String type = item.getType();
 		
@@ -106,6 +106,7 @@ public abstract class DungeonCharacter
 					legs = item;
 		else if(type.equals("feet"))
 					feet = item;
+		return null;
 			
 	}
 	

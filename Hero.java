@@ -12,7 +12,7 @@ public class Hero extends DungeonCharacter
 		
 	}
 	
-	public void isHero()
+	public boolean isHero()
 	{
 		return true;
 	}
@@ -52,7 +52,8 @@ public class Hero extends DungeonCharacter
 					feet = item;
 					return old;
 				}
-			
+		else
+			return null;
 	}
 
 }

@@ -58,13 +58,16 @@ public class Battle
 		{
 			if (i == x)
 			{
-				System.out.println(i + ": Self");
+				System.out.println(i + ": Self" + order[i].getHealth());
 			}
 			else
 			{
 				System.out.print(i + ": " + order[i].getName());
 				if (order[i].isAlive())
-					System.out.println(" Status: Alive");
+				{
+					System.out.println(" Health: " + order[i].getHealth());
+					
+				}
 				else
 					System.out.println(" Status: Dead");
 			}
