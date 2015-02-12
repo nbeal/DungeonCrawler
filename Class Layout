@@ -1,6 +1,9 @@
 https://www.dropbox.com/sh/nohhscazzd34yw7/AADKHN_EEkp6RU42mAU3U_8wa?dl=0
 Heroes and MOnsters^
 
+Reference for logic of game - Hashmaps galore!
+https://github.com/paullaros/Dungeon-Crawler/blob/master/Room.java
+
 Classes
 DunegeonCharacter()
 Values of stats(hp, str, dex, MANA/STAMINA, etc), name
