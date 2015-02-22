@@ -25,7 +25,7 @@ public class PlayerCharacter extends Hero
 		return uniqueInstance;
 	}
 	
-	public void isHero()
+	public boolean isHero()
 	{
 		return true;
 	}

@@ -7,7 +7,7 @@ public class Game
     
     private Room[] rooms = new Room[25];
     
-    public Game
+    public Game ()
     {
         
     }

@@ -1,12 +1,12 @@
 public class Hero extends DungeonCharacter
 {
 
-	private Hero()
+	protected Hero()
 	{
 		super();
 	}
 	
-	private Hero(int hp, int str, int dex, int stam, int def, String tempName)
+	protected Hero(int hp, int str, int dex, int stam, int def, String tempName)
 	{
 		super(hp, str, dex, stam, def, tempName);
 		
