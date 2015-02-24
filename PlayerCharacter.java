@@ -2,7 +2,7 @@ import java.util.*;
 
 public class PlayerCharacter extends Hero
 {
-	ArrayList inventory;
+	ArrayList<Equipment> inventory;
 	
 	private static PlayerCharacter uniqueInstance;
 	
@@ -15,7 +15,7 @@ public class PlayerCharacter extends Hero
 	{
 		super(hp, str, dex, stam, def, tempName);
 		
-		inventory  = new ArrayList();
+		inventory  = new ArrayList<Equipment>();
 	}
 	
 	public static PlayerCharacter getInstancePlayer(int hp, int str, int dex, int stam, int def, String tempName)
@@ -25,14 +25,16 @@ public class PlayerCharacter extends Hero
 		return uniqueInstance;
 	}
 	
-	public void isHero()
+	public boolean isHero()
 	{
 		return true;
 	}
 	
-	public void equipPartyMember(Hero hero, Equipment equipment)
+	public void equipPartyMember(Hero hero, int index)
 	{
-		
+		Equipment equipment = inventory.remove(index);
+		Equipment old = hero.equip(equipment);
+		inventory.add(old);
 	
 	}
 

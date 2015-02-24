@@ -1,9 +1,9 @@
-public class Tackle implements AttackType
+public class Tackle extends AttackType
 {
 	
-	public void attack(DungeonCharacter defender)
+	public Tackle()
 	{
-		defender.modifyHealth(4);
+		name = "Tackle";
+		damage = 4;
 	}
-
 }

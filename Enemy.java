@@ -3,12 +3,17 @@ import java.util.Random;
 public class Enemy extends DungeonCharacter
 {
 	
-	private Enemy()
+	public Enemy()
 	{
 		super();
 	}
 	
-	private Enemy(int hp, int str, int dex, int stam, int def, String tempName)
+	public Enemy(String enName, Stats stats)
+	{
+			super(enName, stats);
+	}
+	
+	public Enemy(int hp, int str, int dex, int stam, int def, String tempName)
 	{
 		super(hp, str, dex, stam, def, tempName);
 		
@@ -19,19 +24,17 @@ public class Enemy extends DungeonCharacter
 		return false;
 	}
 	
-	public int hasItem() //will reference a XML doc of Items
+/*	public int hasItem() //will reference a XML doc of Items
 	{
 		Random rand = new Random();
-		int max = 10;
-	    int randomNum = rand.nextInt((max - 1)) + 1;
+	    int randomNum = rand.nextInt((10 - 1) + 1) + min;
 	    
 	    if(randomNum < 2) //20% chance of dropping
 	    {
-	    	int index = rand.nextInt((max - 1)) + 1; //need to tailor to size of XML doc
+	    	int index = rand.nextInt((10 - 1) + 1) + min; //need to tailor to size of XML doc
 	    }
 	    else
 	    	return -1; //int of no item
-		return randomNum;
 	}
-
+*/
 }

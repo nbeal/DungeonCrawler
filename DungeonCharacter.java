@@ -7,7 +7,6 @@ public abstract class DungeonCharacter
 	private int dexterity;
 	private int stamina;
 	private int defense;
-	//etc)
 	private String name;
 	
 	AttackType attacktype;
@@ -28,7 +27,20 @@ public abstract class DungeonCharacter
 		this.dexterity = 0;
 		this.stamina = 0;
 		this.defense = 0;
-		this.name = "derp";
+		this.name = "Nothing";
+	}
+	
+	public DungeonCharacter(String enName, Stats statistics)
+	{
+		int[] stats = statistics.getStats();
+		
+		this.hitPoints = stats[0];
+		this.strength = stats[1];
+		this.dexterity = stats[2];
+		this.stamina = stats[3];
+		this.defense = stats[4];
+		this.name =enName;
+
 	}
 	
 	public DungeonCharacter(int hp, int str, int dex, int stam, int def, String tempName)
@@ -40,24 +52,47 @@ public abstract class DungeonCharacter
 		this.defense = def;
 		this.name = tempName;
 	}
+
 	
-	public void attack(DungeonCharacter defender)
+	public int attack(DungeonCharacter defender)
 	{
-		attacktype.attack(defender);
+		return attacktype.attack(defender);
 	}
 	
-	public void special(DungeonCharacter defender)
+	public int special(DungeonCharacter defender)
 	{
-		special.SpecialAttack(defender);
+		int stamUsed = special.getStamUsed();
+		if(getStamina() >= stamUsed)
+		{
+			modifyStamina(stamUsed);
+			return special.attack(defender);
+		}
+		System.out.println("Not enough stamina to use");
+		return 1234567;
+		
 	}
 	
-	public void modifyHealth(int damage)
+	public int modifyHealth(int damage)
 	{
-		this.hitPoints -= damage;
+		int hitDamage = damage;
+		this.hitPoints -= hitDamage;
 		
 		if(this.hitPoints < 0)
 			this.hitPoints = 0;
+		return hitDamage;
 	}
+	
+	public void modifyStamina(int stamUsed)
+	{
+		stamina -= stamUsed;
+
+	}
+	
+	public int getStamina()
+	{
+		return stamina;
+	}
+
 	
 	public void reactToAction(int damage)
 	{
@@ -106,7 +141,8 @@ public abstract class DungeonCharacter
 					legs = item;
 		else if(type.equals("feet"))
 					feet = item;
-		return null;
+					
+		return item;
 			
 	}
 	

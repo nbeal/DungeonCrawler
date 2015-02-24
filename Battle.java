@@ -1,14 +1,23 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Battle
 {
 	public static void main(String[] args)
 	{
-		DungeonCharacter monster1 = new Blob();
-		DungeonCharacter monster2 = new Blob();
+		CharacterFactory enFact = new CharacterFactory();
+		DungeonCharacter monster1 = enFact.orderEnemy("Blob");
+		DungeonCharacter monster2 = enFact.orderEnemy("Blob");
+		DungeonCharacter monster3 = enFact.orderEnemy("Blob");
+		DungeonCharacter hero1 = enFact.orderEnemy("Wizard");
+		DungeonCharacter hero2 = enFact.orderEnemy("Paladin");
 		
-		monster1.attack(monster2);
-		System.out.println(monster2.getHealth());
+		DungeonCharacter[] heroes = {hero1, hero2};
+		DungeonCharacter[] enemies = {monster1, monster2, monster3};
+		
+		battle(heroes, enemies);
+		//monster1.attack(monster2);
+		//System.out.println(monster2.getHealth());
+		
 	}
 	
 	public static void battle(DungeonCharacter[] heroes, DungeonCharacter[] enemies)
@@ -24,12 +33,33 @@ public class Battle
 				{
 					if (order[x].isAlive())
 					{
+						int damage = 0;
 						//Select Action
+						
+						if(order[x].isHero())
+						{
+							System.out.println("\n-----------------------------------------------------------------");
+							for(int j = 0; j < order.length; j++)
+							{
+								if(!order[j].isHero())
+								System.out.print(order[j].getName() + " Hp:" + order[j].getHealth() + "     ");
+							}
+							
+							System.out.println("");
+						}
 						int action = selectAction(order[x]);
 						//Select Target (print dead if dead)
-						int target = selectTarget(order, x);
+						int target = selectTarget(order, heroes, x);
 						//Damage Target
-						order[x].attack(order[target]);
+						if(action == 1)
+						{
+							damage = order[x].attack(order[target]);
+						}
+						else
+						{
+							damage =  order[x].special(order[target]);
+						}
+						System.out.println(order[x].getName() + " hit " + order[target].getName() + " for " + damage + " damage!" );
 						//check status for each group;
 						heroStatus = checkStatus(heroes);
 						enemyStatus = checkStatus(enemies);
@@ -39,47 +69,58 @@ public class Battle
 		}
 		if (heroStatus)
 		{
-			System.out.println("You won the battle");
+			System.out.println("You won the battle!");
 		}
 		else
 		{
-			System.out.println("You lost");
+			System.out.println("You lost!");
 		}
 	}
 
 	
 	
 	
-	private static int selectTarget(DungeonCharacter[] order, int x)
+	private static int selectTarget(DungeonCharacter[] order, DungeonCharacter[] heroes, int x)
 	{
 		// TODO Auto-generated method stub
-		System.out.println("Select a target");
-		for (int i = 0; i < order.length; i++)
+		if (order[x].isHero())
 		{
-			if (i == x)
+			System.out.println("Select a target");
+			for (int i = 0; i < order.length; i++)
 			{
-				System.out.println(i + ": Self" + order[i].getHealth());
-			}
-			else
-			{
-				System.out.print(i + ": " + order[i].getName());
-				if (order[i].isAlive())
+				if (i == x)
 				{
-					System.out.println(" Health: " + order[i].getHealth());
-					
+					System.out.println(i + 1 + ": Self");
 				}
 				else
-					System.out.println(" Status: Dead");
+				{
+					System.out.print(i + 1 + ": " + order[i].getName());
+					if (order[i].isAlive())
+						System.out.println(" Status: Alive");
+					else
+						System.out.println(" Status: Dead");
+				}
 			}
+			Scanner kb = new Scanner(System.in);
+			int choice = kb.nextInt();
+			while (choice > (order.length) || choice < 1)
+			{
+				System.out.println("Invalid, pick again");
+				choice = kb.nextInt();
+			}
+			return choice - 1;
 		}
-		Scanner kb = new Scanner(System.in);
-		int choice = kb.nextInt();
-		while (choice > (order.length - 1) || choice < 1)
+		else
 		{
-			System.out.println("Invalid, pick again");
-			choice = kb.nextInt();
+			int choice = (int) ( Math.random() * heroes.length);
+			while(!heroes[choice].isAlive())
+			{
+				choice = (int) ( Math.random() * heroes.length);
+			}
+			
+			return Arrays.asList(order).indexOf(heroes[choice]);
+			
 		}
-		return choice;
 	}
 
 	private static int selectAction(DungeonCharacter attacker)
@@ -87,8 +128,8 @@ public class Battle
 		int choice;
 		if (attacker.isHero())
 		{
-			System.out.println("What will " + attacker.getName() + " do?");
-			System.out.println("1) Attack \n2) Special Attack \n3) Nothing\n");
+			System.out.println("\nWhat will " + attacker.getName() + " do?		Hp:" + attacker.getHealth() + " Stamina:" + attacker.getStamina());
+			System.out.println("1) " + attacker.attacktype.getAttackName()+ " \n2) " + attacker.special.getAttackName() + "\n3) Nothing\n");
 			Scanner kb = new Scanner(System.in);
 			choice = kb.nextInt();
 			while (choice > 3 || choice < 1)
@@ -116,7 +157,7 @@ public class Battle
 
 	private static DungeonCharacter[] concat(DungeonCharacter[] heroes, DungeonCharacter[] enemies)
 	{
-		// TODO Auto-generated method stub
+		
 		DungeonCharacter[] temp = new DungeonCharacter[heroes.length + enemies.length];
 		int x;
 		for (x = 0; x < heroes.length; x++)

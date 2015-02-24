@@ -1,12 +1,18 @@
 public class Hero extends DungeonCharacter
 {
 
-	private Hero()
+	public Hero()
 	{
 		super();
 	}
 	
-	private Hero(int hp, int str, int dex, int stam, int def, String tempName)
+	public Hero(String enName, Stats stats)
+	{
+			super(enName, stats);
+	}
+
+	
+	public Hero(int hp, int str, int dex, int stam, int def, String tempName)
 	{
 		super(hp, str, dex, stam, def, tempName);
 		
@@ -52,8 +58,7 @@ public class Hero extends DungeonCharacter
 					feet = item;
 					return old;
 				}
-		else
-			return null;
+		return null;	
 	}
 
 }

@@ -1,5 +1,18 @@
-//Written by Nicholas Valentine
-public interface AttackType
+
+public abstract class AttackType
 {
-	public void attack(DungeonCharacter defender);
-}
+	String name;
+	int damage;
+	public int attack(DungeonCharacter defender)
+	{
+		return defender.modifyHealth(getDamage());
+	}
+	
+	public String getAttackName()
+	{
+		return name;
+	}
+	public int getDamage()
+	{
+		return damage;
+	}}
