@@ -9,7 +9,7 @@ public class Game
     private static boolean exit = false;
     private static Scan scan = new Scan();
     
-    public void initialize()
+    public static void initialize()
     {
         initialMessage();
         rooms = scan.scanInRooms();
@@ -103,7 +103,7 @@ public class Game
     	    }
 	    }
 	    
-	    tryEncounter(current);
+	    //tryEncounter(current);  //Fight random encounter
 	}
         
     private static void initialMessage()
