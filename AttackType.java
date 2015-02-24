@@ -2,17 +2,19 @@
 public abstract class AttackType
 {
 	String name;
+	int damageType;
 	int damage;
-	public int attack(DungeonCharacter defender)
+	public String attack()
 	{
-		return defender.modifyHealth(getDamage());
+		return getDamage();
 	}
 	
 	public String getAttackName()
 	{
 		return name;
 	}
-	public int getDamage()
+	private String getDamage()
 	{
-		return damage;
-	}}
+		return damageType + "," + damage;
+	}
+}

@@ -5,5 +5,6 @@ public class Tackle extends AttackType
 	{
 		name = "Tackle";
 		damage = 4;
+		damageType = DamageHandler.DAMAGE_NORMAL;
 	}
 }

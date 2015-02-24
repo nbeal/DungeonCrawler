@@ -47,13 +47,22 @@ public class DamageHandler
 		return passedOut;
 	}
 	
-	public static double damageCalculation( int[] defender, int[] Damages)
+	public static int[] modifyArray(int[] Array, String Values)
 	{
-		double damageTaken = Math.max(0, Damages[DAMAGE_NORMAL] - defender[DAMAGE_NORMAL] * .25);
-		damageTaken += Math.max(0, Damages[DAMAGE_PIERCE] - defender[DAMAGE_PIERCE] * .25);
-		damageTaken += Math.max(0, Damages[DAMAGE_FIRE] - defender[DAMAGE_FIRE] * .25);
-		damageTaken += Math.max(0, Damages[DAMAGE_WATER] - defender[DAMAGE_WATER] * .25);
-		damageTaken += Math.max(0, Damages[DAMAGE_ELEC] - defender[DAMAGE_ELEC] * .25);
+		String[] data = Values.split(",");
+		for (int i = 0; i < data.length; i+=2)
+		{
+			Array[Integer.parseInt(data[i])] = Integer.parseInt(data[i + 1]);
+		}
+		return Array;
+	}
+	public static int damageCalculation( int[] defender, int[] Damages)
+	{
+		int damageTaken = Math.max(0, Damages[DAMAGE_NORMAL] - defender[DAMAGE_NORMAL] * 1);
+		damageTaken += Math.max(0, Damages[DAMAGE_PIERCE] - defender[DAMAGE_PIERCE] * 1);
+		damageTaken += Math.max(0, Damages[DAMAGE_FIRE] - defender[DAMAGE_FIRE] * 1);
+		damageTaken += Math.max(0, Damages[DAMAGE_WATER] - defender[DAMAGE_WATER] * 1);
+		damageTaken += Math.max(0, Damages[DAMAGE_ELEC] - defender[DAMAGE_ELEC] * 1);
 		return damageTaken;
 	}
 }
