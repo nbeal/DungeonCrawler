@@ -8,3 +8,5 @@
 /PlayerCharacter.class
 /SpecialAttack.class
 /Tackle.class
+/Game.class
+/DamageHandler.class
