@@ -6,7 +6,6 @@ public abstract class DungeonCharacter
 	private int strength;
 	private int dexterity;
 	private int stamina;
-	private int defense;
 	private int[] defenses;
 	private String name;
 	
@@ -27,7 +26,6 @@ public abstract class DungeonCharacter
 		this.strength = 0;
 		this.dexterity = 0;
 		this.stamina = 0;
-		this.defense = 0;
 		
 		this.defenses = DamageHandler.fillArray("");
 		
@@ -42,7 +40,6 @@ public abstract class DungeonCharacter
 		this.strength = stats[1];
 		this.dexterity = stats[2];
 		this.stamina = stats[3];
-		this.defense = stats[4];
 		
 		String def = "" + DamageHandler.getInstance().DAMAGE_NORMAL;
 		def = def + "," + stats[4];
@@ -58,7 +55,6 @@ public abstract class DungeonCharacter
 		this.strength = str;
 		this.dexterity = dex;
 		this.stamina = stam;
-		this.defense = def;
 		
 		String sdef = "" + DamageHandler.getInstance().DAMAGE_NORMAL;
 		sdef = sdef + "," + def;
@@ -115,22 +111,6 @@ public abstract class DungeonCharacter
 	{
 		return stamina;
 	}
-
-	
-	/*public void reactToAction(int damage)
-	{
-		int realDamage;
-		
-		if(damage < 0)
-			this.modifyHealth(damage);
-		else
-		{
-			realDamage = damage - this.calcTotalDef();
-			
-			if(realDamage > 0)
-				this.modifyHealth(realDamage);
-		}
-	}*/
 	
 	public int getHealth()
 	{
@@ -145,10 +125,10 @@ public abstract class DungeonCharacter
 		return true;
 	}
 	
-	public int calcTotalDef()
+	/*public int calcTotalDef()
 	{
 		return defense + head.getDef() + torso.getDef() + hands.getDef() + legs.getDef() + feet.getDef();
-	}
+	}*/
 	
 	public Equipment equip(Equipment item)
 	{
