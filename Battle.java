@@ -4,12 +4,14 @@ public class Battle
 {
 	public static void main(String[] args)
 	{
-		CharacterFactory enFact = new CharacterFactory();
-		DungeonCharacter monster1 = enFact.orderEnemy("Blob");
-		DungeonCharacter monster2 = enFact.orderEnemy("Blob");
-		DungeonCharacter monster3 = enFact.orderEnemy("Blob");
-		DungeonCharacter hero1 = enFact.orderEnemy("Wizard");
-		DungeonCharacter hero2 = enFact.orderEnemy("Paladin");
+		CharacterFactory enFact = new EnemyFactory();
+		DungeonCharacter monster1 = enFact.order("Blob");
+		DungeonCharacter monster2 = enFact.order("Blob");
+		DungeonCharacter monster3 = enFact.order("Blob");
+		
+		enFact = new HeroFactory();
+		DungeonCharacter hero1 = enFact.order("Wizard");
+		DungeonCharacter hero2 = enFact.order("Paladin");
 		
 		DungeonCharacter[] heroes = {hero1, hero2};
 		DungeonCharacter[] enemies = {monster1, monster2, monster3};
