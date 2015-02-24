@@ -1,74 +1,128 @@
-import java.io.Scanner;
+import java.io.*;
 import java.util.*;
 
 //Main Game Starter
 public class Game
 {
-    
-    private Room[] rooms = new Room[25];
-    
-    public Game ()
-    {
-        
-    }
+    private static Room[] rooms;
+    private static Room current = new Room();
+    private static boolean exit = false;
+    private static Scan scan = new Scan();
     
     public void initialize()
     {
         initialMessage();
-        scanInRooms();
-        
+        rooms = scan.scanInRooms();
+        current = rooms[0];
     }
     
-    private static String[][] scanInRooms()
+    public static void main(String[] args)
     {
-        //0.ID-1.NAME-2.DESC-3.EXIT(NWSE)-4.ITEM
-        int numAttrib = 5; //See above
+        initialize();
         
-        String[] rawData = new String[25];
-        String[] parsedData = new String[25];
-        String[][] arrayRooms = new String[25][5]; //[Room][attrib]
-        String delims = "[-]";
+        Scanner scanner = new Scanner(System.in);
+        String input;
         
-        Scanner roomScan;
-        try{
-            roomScan = new Scanner(new File("Rooms.txt"));
-            
-                    int i = 0;
-        
-            while(roomScan.hasNextLine())
-            {
-                rawData[i] = roomScan.nextLine();      //Line of text
-                parsedData = rawData[i].split(delims); //split on -
-                for(int z = 0; z < numAttrib; z++)
-                    arrayRooms[i][z] = parsedData[z];  //passed into 2D array
-                i++;
-                
-            }//end while
-        }catch(FileNotFoundException e)
+        while(!exit)
         {
-            //Terminate Program as there is no map
+            System.out.println("\nCurrent room id is " + current.getID() + ". " + current.getDescription());
+            System.out.printf("\nWhich direction would you like to move to?\n> ");
+            input = scanner.nextLine();
+            handleCommand(input);
         }
-                
-        return arrayRooms;
+        scanner.close();
     }
-        /*tester
-        public static void main(String[] args)
-        {
-            String[][] arrayRooms = scanInRooms();
-            
-            for(int x = 0; x < 11; x++)
-            {
-                System.out.println("Room " + x + ": ");
-                for(int i = 0; i < 5; i++)
-                    System.out.println(arrayRooms[x][i])
-            }
+    
+    private static void handleCommand(String userInput) {
+		
+		int direction;
+		userInput = checkAbrev(userInput);
+		switch(userInput.toLowerCase())
+		{
+			case "north":
+				System.out.println("Going north...");
+				direction = current.getNorth();
+				moveRoom(direction);
+			break;
+			case "west":
+				System.out.println("Going west...");
+				direction = current.getWest();
+				moveRoom(direction);
+			break;
+			case "south":
+				System.out.println("Going south...");
+				direction = current.getSouth();
+				moveRoom(direction);
+			break;
+			case "east":
+				System.out.println("Going east...");
+				direction = current.getEast();
+				moveRoom(direction);
+			break;
+			case "exit":
+				System.out.println("Exiting...");
+				exit = true;
+			break;
+			case "help":
+				System.out.println("Possible Commands:");
+				System.out.println("north\nwest\nsouth\neast\nexit\nhelp");
+			break;
+			
+			default:
+				System.out.println("Invalid Command");
+			break;
+		}
+	}
+	
+	public static void moveRoom(int direction)
+	{
+	    if(direction == 0) //invalid direction
+	    {
+	        System.out.println("Invalid Direction");
+	        return;
+	    }
+	    
+	    //---------------------------------------------
+	    
+	    if(direction == 1) //edge case 1
+	    {
+    	    try{
+    	        current = rooms[0]; //Moving room 
+    	    }catch(Exception e)
+    	    {
+    	        System.out.println("You tried to walk through walls!");
+    	    }
+	    }
+	    else
+	    {
+    	    try{
+    	        current = rooms[direction]; //Moving room 
+    	    }catch(Exception e)
+    	    {
+    	        System.out.println("You tried to walk through walls!");
+    	    }
+	    }
+	    
+	    tryEncounter(current);
+	}
         
-        }*/
-        
-    private void initialMessage()
+    private static void initialMessage()
     {
         System.out.println("You and your party have started on your great quest to rid the halls of the Dread Lord Crypt of evil. You entered the long sealed doors and when you stepped in, the doors slammed shut sealing you in with the evil within.");
     }
     
+    private static String checkAbrev(String userInput)
+    {
+        if(userInput.equals("n"))
+            return "north";
+        if(userInput.equals("w"))
+            return "west";
+        if(userInput.equals("s"))
+            return "south";
+        if(userInput.equals("e"))
+            return "east";
+        return userInput;
+    }
     
 }
+
