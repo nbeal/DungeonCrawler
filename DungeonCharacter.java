@@ -7,6 +7,7 @@ public abstract class DungeonCharacter
 	private int dexterity;
 	private int stamina;
 	private int defense;
+	private int[] defenses;
 	private String name;
 	
 	AttackType attacktype;
@@ -18,7 +19,7 @@ public abstract class DungeonCharacter
 	Equipment hands;
 	Equipment feet;
 	Equipment legs;
-	
+	Equipment weapon;
 	
 	public DungeonCharacter()
 	{
@@ -27,6 +28,9 @@ public abstract class DungeonCharacter
 		this.dexterity = 0;
 		this.stamina = 0;
 		this.defense = 0;
+		
+		this.defenses = DamageHandler.fillArray("");
+		
 		this.name = "Nothing";
 	}
 	
@@ -39,6 +43,11 @@ public abstract class DungeonCharacter
 		this.dexterity = stats[2];
 		this.stamina = stats[3];
 		this.defense = stats[4];
+		
+		String def = "" + DamageHandler.getInstance().DAMAGE_NORMAL;
+		def = def + "," + stats[4];
+		defenses = DamageHandler.fillArray(def);
+		
 		this.name =enName;
 
 	}
@@ -50,31 +59,45 @@ public abstract class DungeonCharacter
 		this.dexterity = dex;
 		this.stamina = stam;
 		this.defense = def;
+		
+		String sdef = "" + DamageHandler.getInstance().DAMAGE_NORMAL;
+		sdef = sdef + "," + def;
+		defenses = DamageHandler.fillArray(sdef);
 		this.name = tempName;
 	}
 
 	
 	public int attack(DungeonCharacter defender)
 	{
-		return attacktype.attack(defender);
+		String attack = attacktype.attack();
+		int[] damage = DamageHandler.fillArray(attack);
+		return defender.modifyHealth(damage);
+		//return attacktype.attack(defender);
 	}
 	
 	public int special(DungeonCharacter defender)
 	{
+		
+		
 		int stamUsed = special.getStamUsed();
 		if(getStamina() >= stamUsed)
 		{
 			modifyStamina(stamUsed);
-			return special.attack(defender);
+			//return special.attack(defender);
+			
+			String attack = special.attack();
+			int[] damage = DamageHandler.fillArray(attack);
+			return defender.modifyHealth(damage);
+			
 		}
 		System.out.println("Not enough stamina to use");
 		return 1234567;
 		
 	}
 	
-	public int modifyHealth(int damage)
+	public int modifyHealth(int[] damage)
 	{
-		int hitDamage = damage;
+		int hitDamage = DamageHandler.damageCalculation(defenses, damage);
 		this.hitPoints -= hitDamage;
 		
 		if(this.hitPoints < 0)
@@ -94,7 +117,7 @@ public abstract class DungeonCharacter
 	}
 
 	
-	public void reactToAction(int damage)
+	/*public void reactToAction(int damage)
 	{
 		int realDamage;
 		
@@ -107,7 +130,7 @@ public abstract class DungeonCharacter
 			if(realDamage > 0)
 				this.modifyHealth(realDamage);
 		}
-	}
+	}*/
 	
 	public int getHealth()
 	{

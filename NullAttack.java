@@ -4,5 +4,6 @@ public class NullAttack extends AttackType
 	{
 		name = "Nothing";
 		damage = 0;
+		damageType = DamageHandler.DAMAGE_NORMAL;
 	}
 }

@@ -5,5 +5,6 @@ public class HolyStrike extends SpecialAttack
 		name = "Holy Strike";
 		damage = 12;
 		stamUsed = 6;
+		damageType = DamageHandler.DAMAGE_PIERCE;
 	}
 }

@@ -10,3 +10,13 @@
 /Tackle.class
 /Game.class
 /DamageHandler.class
+/CharacterFactory.class
+/HolyStrike.class
+/NullAttack.class
+/NullSpecialAttack.class
+/Paladin.class
+/Slash.class
+/Stats.class
+/StatsFactory.class
+/ThunderBolt.class
+/Wizard.class

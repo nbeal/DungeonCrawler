@@ -5,6 +5,7 @@ public class ThunderBolt extends SpecialAttack
 		stamUsed = 10;
 		name = "Thunder Bolt";
 		damage = 10; 
+		damageType = DamageHandler.DAMAGE_ELEC;
 	}
 
 }

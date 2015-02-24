@@ -4,5 +4,6 @@ public class Slash extends AttackType
 	{
 		name = "Slash";
 		damage = 6;
+		damageType = DamageHandler.DAMAGE_NORMAL;
 	}
 }
