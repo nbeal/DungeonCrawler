@@ -4,10 +4,10 @@ import java.util.*;
 //Main Game Starter
 public class Game
 {
-	private static int 		_encounterChance = 80; //chance of encounter in unchecked room
-	private static int 		_clearedChance = 5;    //chance of encounter in checked room
+    private static int 		_encounterChance = 80; //chance of encounter in unchecked room
+    private static int 		_clearedChance = 5;    //chance of encounter in checked room
 	
-	private static int 		_keys;
+    private static int 		_keys;
     private static Room[] 	_rooms;
     private static Menu 	_menu;
     private static Room 	_current;
@@ -71,7 +71,7 @@ public class Game
 	{
 	    if(direction == 0) //invalid direction
 	    {
-	        System.out.println("\nYOu cannot go in that direction!"");
+	        System.out.println("\nYOu cannot go in that direction!");
 	        return;
 	    }
 	    //---------------------------------------------
