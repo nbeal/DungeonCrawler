@@ -5,7 +5,8 @@ public class Room
 {
     private String name, description, id;
     private String[] directions = new String[5];
-    private int north, west, south, east, item;
+    private int north, west, south, east, key, lock;
+    private boolean cleared;
     
     public String getName()
     {
@@ -79,13 +80,33 @@ public class Room
     public int getSouth() {return this.south;}
     public int getEast()  {return this.east;}
     
-    public void setItem(String passed)
+    public void setKey(String passed)
     {
-        this.item = Integer.parseInt(passed);
+        this.key = Integer.parseInt(passed);
     }
     
-    public int getItem()
+    public int getKey()
     {
-        return this.item;
+        return this.key;
+    }
+    
+    public boolean getCleared()
+    {
+        return this.cleared;
+    }
+    
+    public void setCleared(boolean thing)
+    {
+        this.cleared = thing;
+    }
+    
+    public int getLocked()
+    {
+        return this.lock;
+    }
+    
+    public void setLocked(String locked)
+    {
+        this.lock = Integer.parseInt(locked);
     }
 }
