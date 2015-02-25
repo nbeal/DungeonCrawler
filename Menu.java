@@ -25,32 +25,39 @@ public class Menu
 		switch(userInput.toLowerCase())
 		{
 			case "north":
-				System.out.println("Going north...");
+				System.out.println("\nGoing north...");
 				return userInput;
 			
 			case "west":
-				System.out.println("Going west...");
+				System.out.println("\nGoing west...");
 				return userInput;
 			
 			case "south":
-				System.out.println("Going south...");
+				System.out.println("\nGoing south...");
 				return userInput;
 			
 			case "east":
-				System.out.println("Going east...");
+				System.out.println("\nGoing east...");
 				return userInput;
 			
+			case "take":
+			    userInput = "get";
+			    return userInput;
+			
+			case "get":
+			    return userInput;
+			
 			case "exit":
-				System.out.println("Exiting...");
+				System.out.println("\nExiting...");
 				return userInput;
 			
 			case "help":
-				System.out.println("Possible Commands:");
-				System.out.println("north\nwest\nsouth\neast\nexit\nhelp");
+				System.out.println("\nPossible Commands:");
+				System.out.println("north\nwest\nsouth\neast\nget/pick up/take\nexit\nhelp");
 				return null;
 			
 			default:
-				System.out.println("Invalid Command");
+				System.out.println("\nInvalid Command");
 				return null;
 		}
 	}
@@ -65,6 +72,10 @@ public class Menu
             return "south";
         if(userInput.equals("e"))
             return "east";
+        
+        if(userInput.contains("key"))
+            return "get";
+            
         return userInput;
     }
 
