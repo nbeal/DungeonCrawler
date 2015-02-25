@@ -55,6 +55,25 @@ public class Room
         }
     }
     
+    public int getDirection(String userInput)
+    {
+        switch(userInput.toLowerCase())
+		{
+			case "north":
+				return getNorth();
+			case "west":
+				return getWest();
+			case "south":
+				return getSouth();
+			case "east":
+				return getEast();
+			default:
+				System.out.println("Invalid Command");
+			break;
+		}
+		return -1;
+    }
+    
     public int getNorth() {return this.north;}
     public int getWest()  {return this.west;}
     public int getSouth() {return this.south;}
