@@ -6,11 +6,11 @@ public class Scan
     
     public static Room[] scanInRooms()
     {
-        //0.ID-1.NAME-2.DESC-3.EXIT(NWSE)-4.ITEM
-        int numAttrib = 5; //See above
-        int numRooms = 26;
+        //0.ID-1.NAME-2.DESC-3.EXIT(NWSE)-4.Key-5.LockedDoor
+        int numAttrib = 6; //See above
+        int numRooms = 25;
         
-        Room[] rooms = new Room[26];
+        Room[] rooms = new Room[25];
         String[] rawData = new String[numRooms];
         String[] parsedData = new String[numRooms];
         String[][] arrayRooms = new String[numRooms][numAttrib]; //[Room][attrib]
@@ -46,7 +46,8 @@ public class Scan
             room.setName(arrayRooms[x][1]);
             room.setDescription(arrayRooms[x][2]);
             room.setExits(arrayRooms[x][3]);
-            room.setItem(arrayRooms[x][4]);
+            room.setKey(arrayRooms[x][4]);
+            room.setLocked(arrayRooms[x][5]);
             rooms[x] = room; //added room to array of rooms
         }
         return rooms;
