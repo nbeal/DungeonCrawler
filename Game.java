@@ -5,73 +5,50 @@ import java.util.*;
 public class Game
 {
     private static Room[] rooms;
-    private static Room current = new Room();
-    private static boolean exit = false;
+    private static Menu _menu;
+    private static Room _current;
+    private static boolean exit;
     private static Scan scan = new Scan();
     
     public static void initialize()
     {
         initialMessage();
+        
+        scan = new Scan();
         rooms = scan.scanInRooms();
-        current = rooms[0];
+        _menu = Menu.getInstance();
+        _current = new Room(); _current = rooms[0];
+        exit = false;
     }
     
     public static void main(String[] args)
     {
         initialize();
+        String input, userInput;
         
         Scanner scanner = new Scanner(System.in);
-        String input;
-        
         while(!exit)
         {
-            System.out.println("\nCurrent room id is " + current.getID() + ". " + current.getDescription());
+            System.out.println("\nCurrent room id is " + _current.getID() + ". " + _current.getDescription());
             System.out.printf("\nWhich direction would you like to move to?\n> ");
             input = scanner.nextLine();
-            handleCommand(input);
+            userInput = _menu.handleCommand(input);
+            checkCommand(userInput);
+            
         }
         scanner.close();
     }
-    
-    private static void handleCommand(String userInput) {
-		
-		int direction;
-		userInput = checkAbrev(userInput);
-		switch(userInput.toLowerCase())
+	
+	public static void checkCommand(String userInput)
+	{
+		if(userInput == null)
+			return;
+		if(userInput.equals("exit"))
 		{
-			case "north":
-				System.out.println("Going north...");
-				direction = current.getNorth();
-				moveRoom(direction);
-			break;
-			case "west":
-				System.out.println("Going west...");
-				direction = current.getWest();
-				moveRoom(direction);
-			break;
-			case "south":
-				System.out.println("Going south...");
-				direction = current.getSouth();
-				moveRoom(direction);
-			break;
-			case "east":
-				System.out.println("Going east...");
-				direction = current.getEast();
-				moveRoom(direction);
-			break;
-			case "exit":
-				System.out.println("Exiting...");
-				exit = true;
-			break;
-			case "help":
-				System.out.println("Possible Commands:");
-				System.out.println("north\nwest\nsouth\neast\nexit\nhelp");
-			break;
-			
-			default:
-				System.out.println("Invalid Command");
-			break;
+			exit = true;
+			return;
 		}
+		moveRoom(_current.getDirection(userInput));
 	}
 	
 	public static void moveRoom(int direction)
@@ -87,7 +64,7 @@ public class Game
 	    if(direction == 1) //edge case 1
 	    {
     	    try{
-    	        current = rooms[0]; //Moving room 
+    	        _current = rooms[0]; //Moving room 
     	    }catch(Exception e)
     	    {
     	        System.out.println("You tried to walk through walls!");
@@ -96,14 +73,14 @@ public class Game
 	    else
 	    {
     	    try{
-    	        current = rooms[direction]; //Moving room 
+    	        _current = rooms[direction]; //Moving room 
     	    }catch(Exception e)
     	    {
     	        System.out.println("You tried to walk through walls!");
     	    }
 	    }
 	    
-	    //tryEncounter(current);  //Fight random encounter
+	    //tryEncounter(current);
 	}
         
     private static void initialMessage()
@@ -111,18 +88,7 @@ public class Game
         System.out.println("You and your party have started on your great quest to rid the halls of the Dread Lord Crypt of evil. You entered the long sealed doors and when you stepped in, the doors slammed shut sealing you in with the evil within.");
     }
     
-    private static String checkAbrev(String userInput)
-    {
-        if(userInput.equals("n"))
-            return "north";
-        if(userInput.equals("w"))
-            return "west";
-        if(userInput.equals("s"))
-            return "south";
-        if(userInput.equals("e"))
-            return "east";
-        return userInput;
-    }
+
     
 }
 
