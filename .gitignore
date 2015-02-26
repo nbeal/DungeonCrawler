@@ -22,3 +22,6 @@
 /Wizard.class
 /Room.class
 /Scan.class
+/EnemyFactory.class
+/HeroFactory.class
+/Menu.class
