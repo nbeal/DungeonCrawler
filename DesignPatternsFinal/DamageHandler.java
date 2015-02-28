@@ -4,7 +4,8 @@ public class DamageHandler
 {
 	private static DamageHandler instance = null;
 	
-	private static int[]	ARRAY_TEMPLATE;
+	//number of 0's equals number of damage types
+	private static int[]	ARRAY_TEMPLATE = new int[] {0,0,0,0,0};
 	/** All of the damage types */
 	public static int	DAMAGE_NORMAL = 0;
 	public static int	DAMAGE_PIERCE = 1;
@@ -12,15 +13,9 @@ public class DamageHandler
 	public static int	DAMAGE_WATER = 3;
 	public static int	DAMAGE_ELEC = 4;
 	
-	protected DamageHandler()
+	private DamageHandler()
 	{
 		      // Exists only to defeat instantiation.
-			ARRAY_TEMPLATE = new int[5];
-			ARRAY_TEMPLATE[0] = 0;
-			ARRAY_TEMPLATE[1] = 0;
-			ARRAY_TEMPLATE[2] = 0;
-			ARRAY_TEMPLATE[3] = 0;
-			ARRAY_TEMPLATE[4] = 0;
 	}
 	
 	public static DamageHandler getInstance()
@@ -41,9 +36,12 @@ public class DamageHandler
 	{
 		String[] data = Values.split(",");
 		int[] passedOut = getArray();
-		for (int i = 0; i < data.length; i+=2)
+		if (!Values.equals(""))
 		{
-			passedOut[Integer.parseInt(data[i])] = Integer.parseInt(data[i + 1]);
+			for (int i = 0; i < data.length; i+=2)
+			{
+				passedOut[Integer.parseInt(data[i])] = Integer.parseInt(data[i + 1]);
+			}
 		}
 		return passedOut;
 	}
@@ -51,9 +49,12 @@ public class DamageHandler
 	public static int[] addToArray(int[] Array, String Values)
 	{
 		String[] data = Values.split(",");
-		for (int i = 0; i < data.length; i+=2)
+		if (!Values.equals(""))
 		{
-			Array[Integer.parseInt(data[i])] = Array[Integer.parseInt(data[i])] + Integer.parseInt(data[i + 1]);
+			for (int i = 0; i < data.length; i+=2)
+			{
+				Array[Integer.parseInt(data[i])] = Array[Integer.parseInt(data[i])] + Integer.parseInt(data[i + 1]);
+			}
 		}
 		return Array;
 	}
@@ -61,9 +62,12 @@ public class DamageHandler
 	public static int[] removeValues(int[] Array, String Values)
 	{
 		String[] data = Values.split(",");
-		for (int i = 0; i < data.length; i+=2)
+		if (!Values.equals(""))
 		{
-			Array[Integer.parseInt(data[i])] = Array[Integer.parseInt(data[i])] - Integer.parseInt(data[i + 1]);
+			for (int i = 0; i < data.length; i+=2)
+			{
+				Array[Integer.parseInt(data[i])] = Array[Integer.parseInt(data[i])] - Integer.parseInt(data[i + 1]);
+			}
 		}
 		return Array;
 	}

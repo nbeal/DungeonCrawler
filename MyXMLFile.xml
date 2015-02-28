@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<items>
+	<equipment>
+		<!-- Armor example: ARMOR:Health:Stength:Dextarity:Stamina:Defense(1,5,2,6):Name:type -->
+		<!-- Weapon example: WEAPON:Health:Stength:Attack(1,5,2,6):Dextarity:Stamina:Name -->
+		<!-- Defense/Attack unlimited number of values. odd values must be between 0 and 4(subject to change) -->
+		<!-- Armor types: head; torso; hands; feet; legs; -->
+		<value1>ARMOR:5:3:5:1:0,5,2,6:helm of testing:head</value1>
+		<value2>ARMOR:999:8:9:20:0,90,2,1:Chest plate of annoying:torso</value2>
+		<value3>ARMOR:0:0:50:10:0,0:shoes of swiftness:feet</value3>
+		<value4>WEAPON:1:4:0,5,2,6:4:2:You have my sword</value4>
+		<value5>WEAPON:1:3:1,20:5:15:and my bow</value5>
+		<value6>WEAPON:0:19:0,14:1:10:AND MY AXE</value6>
+		<value7>Tom2</value7>
+		<value8>Cruise2</value8>
+		<value9>evil2</value9>
+		<value10>testing2</value10>
+		<value11>equipers2</value11>
+		<value12>sword2</value12>
+	</equipment>
+</items>

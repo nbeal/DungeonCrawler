@@ -38,7 +38,8 @@ public class Equipment
 		this.name = tempName;
 	}
 	
-	public Equipment(int hp, int str, int dex, int stam, String def, String tempName)
+	//constructor for armor type equipment
+	public void RedoEquipment(int hp, int str, int dex, int stam, String def, String tempName)
 	{
 		this.hitPoints = hp;
 		this.strength = str;
@@ -49,7 +50,8 @@ public class Equipment
 		this.name = tempName;
 	}
 	
-	public Equipment(int hp, int str, String atk , int dex, int stam, String tempName)
+	//constructor for weapon type equipment
+	public void RedoEquipment(int hp, int str, String atk , int dex, int stam, String tempName)
 	{
 		this.hitPoints = hp;
 		this.strength = str;
