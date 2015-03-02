@@ -1,8 +1,5 @@
 package DesignPatternsFinal;
 
-import java.io.*;
-import java.util.*;
-
 public class Room
 {
     private String name, description, id;

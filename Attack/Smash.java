@@ -8,6 +8,6 @@ public class Smash extends AttackType
 	{
 		name = "Smash";
 		damage = 8;
-		damageType = DamageHandler.DAMAGE_BLUDGEONING;
+		damageType = DamageHandler.DAMAGE_NORMAL;
 	}
 }

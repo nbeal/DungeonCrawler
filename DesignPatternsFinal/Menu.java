@@ -19,8 +19,7 @@ public class Menu
     }//end getInstance
 
     public static String handleCommand(String userInput) {
-		
-		int direction;
+
 		userInput = checkAbrev(userInput);
 		switch(userInput.toLowerCase())
 		{

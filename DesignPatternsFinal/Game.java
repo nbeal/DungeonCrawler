@@ -15,7 +15,7 @@ public class Game
     private static Room 	_current;
     private static boolean 	_exit;
     private static Scan 	_scan;
-    private static String   _previous
+    private static String   _previous;
     
     public static void initialize()
     {
@@ -101,7 +101,7 @@ public class Game
     	    try{
     	    	_current.setCleared(true);
     	        _current = _rooms[direction-1]; //Moving room 
-    	        _previous = userInput;
+    	        getPrevious(userInput);
     	    }catch(Exception e)
     	    {
     	        System.out.println("You tried to walk through walls!");
@@ -171,6 +171,19 @@ public class Game
 	    }
 	    return false;
     }
+
+    public static void getPrevious(String userInput)
+    {
+        if(userInput.equals("north"))
+            _previous =  "south";
+        if(userInput.equals("south"))
+            _previous =  "north";
+        if(userInput.equals("east"))
+            _previous =  "west";
+        if(userInput.equals("west"))
+            _previous = "east";
+    }
+
     
     private static void initialMessage()
     {
