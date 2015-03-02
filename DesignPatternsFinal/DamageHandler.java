@@ -71,6 +71,7 @@ public class DamageHandler
 		}
 		return Array;
 	}
+	
 	public static int damageCalculation( int[] defender, int[] Damages)
 	{
 		int damageTaken = Math.max(0, Damages[DAMAGE_NORMAL] - defender[DAMAGE_NORMAL] * 1);
@@ -79,5 +80,23 @@ public class DamageHandler
 		damageTaken += Math.max(0, Damages[DAMAGE_WATER] - defender[DAMAGE_WATER] * 1);
 		damageTaken += Math.max(0, Damages[DAMAGE_ELEC] - defender[DAMAGE_ELEC] * 1);
 		return damageTaken;
+	}
+
+	public static int[] addToArray(int[] Array, int[] attack)
+	{
+		for (int i = 0; i < Array.length; i++)
+		{
+			Array[i] = Array[i] + attack[i];
+		}
+		return Array;
+	}
+	
+	public static int[] removeValues(int[] Array, int[] attack)
+	{
+		for (int i = 0; i < Array.length; i++)
+		{
+			Array[i] = Array[i] - attack[i];
+		}
+		return Array;
 	}
 }

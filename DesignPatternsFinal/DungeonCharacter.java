@@ -73,14 +73,13 @@ public abstract class DungeonCharacter
 	{
 		String attack = attacktype.attack();
 		int[] damage = DamageHandler.fillArray(attack);
+		damage = DamageHandler.addToArray(damage, weapon.getAttack());
 		return defender.modifyHealth(damage);
 		//return attacktype.attack(defender);
 	}
 	
 	public int special(DungeonCharacter defender)
-	{
-		
-		
+	{		
 		int stamUsed = special.getStamUsed();
 		if(getStamina() >= stamUsed)
 		{
@@ -99,7 +98,8 @@ public abstract class DungeonCharacter
 	
 	public int modifyHealth(int[] damage)
 	{
-		int hitDamage = DamageHandler.damageCalculation(defenses, damage);
+		int[] mydefense = totalDefense();
+		int hitDamage = DamageHandler.damageCalculation(mydefense , damage);
 		this.hitPoints -= hitDamage;
 		
 		if(this.hitPoints < 0)
@@ -107,6 +107,18 @@ public abstract class DungeonCharacter
 		return hitDamage;
 	}
 	
+	private int[] totalDefense()
+	{
+		int[] total;
+		total = defenses.clone();
+		total = DamageHandler.addToArray(total, head.getDefenses());
+		total = DamageHandler.addToArray(total, torso.getDefenses());
+		total = DamageHandler.addToArray(total, hands.getDefenses());
+		total = DamageHandler.addToArray(total, feet.getDefenses());
+		total = DamageHandler.addToArray(total, legs.getDefenses());
+		return total;
+	}
+
 	public void modifyStamina(int stamUsed)
 	{
 		stamina -= stamUsed;
@@ -139,35 +151,61 @@ public abstract class DungeonCharacter
 	public Equipment equip(Equipment item)
 	{
 		String type = item.getType();
-		
-		if(type.equals("head"))
+		Equipment old = null;
+		if (requirementsMet(item))
 		{
-			head = item;
+			if(type.equals("head"))
+			{
+				old = head;
+				head = item;
+			}
+			else if(type.equals("torso"))
+			{
+				old = torso;
+				torso = item;	
+			}
+			else if(type.equals("hands"))
+			{
+				old = hands;
+				hands = item;
+			}
+			else if(type.equals("legs"))
+			{
+				old = legs;
+				legs = item;
+			}
+			else if(type.equals("feet"))
+			{
+				old = feet;
+				feet = item;		
+			}
+			else if(type.equals("weapon"))
+			{
+				old = weapon;
+				weapon = item;
+			}
 		}
-		else if(type.equals("torso"))
+		else
 		{
-			torso = item;
+			System.out.println("Requirements not met to equip this item");
 		}
-		else if(type.equals("hands"))
-		{
-			hands = item;
-		}
-		else if(type.equals("legs"))
-		{
-			legs = item;
-		}
-		else if(type.equals("feet"))
-		{
-			feet = item;
-		}
-		else if(type.equals("weapon"))
-		{
-			weapon = item;
-		}
-		return item;
+		return old;
 			
 	}
 	
+	private boolean requirementsMet(Equipment item)
+	{
+		// TODO Auto-generated method stub
+		if (this.dexterity >= item.getDex())
+		{
+			if (this.strength >= item.getStrength())
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public boolean isHero()
 	{
 		return false;

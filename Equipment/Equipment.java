@@ -82,4 +82,14 @@ public class Equipment
 		return type;
 	}
 
+	public int getDex() 
+	{
+		return this.dexterity;
+	}
+
+	public int getStrength() 
+	{
+		return this.strength;
+	}
+
 }
