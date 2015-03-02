@@ -20,6 +20,20 @@ public class Stats
 		{
 			stats = new int[] {50, 10, 5, 15, 10};
 		}
+		else
+		if(name.equals("Barbarian"))
+		{
+			stats = new int[] {100, 12, 5, 25, 0};
+		}
+		else
+		if(name.equals("Cleric"))
+		{
+			stats = new int[] {40, 6, 5, 30, 5};
+		}
+		if(name.equals("Ranger"))
+		{
+			stats = new int[] {40, 5, 8, 20, 5};
+		}
 
 	}
 	public int[] getStats() 

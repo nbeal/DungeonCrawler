@@ -1,7 +1,7 @@
 1-Start-You are in the first room of the crypt, tattered banners of a long dead civilization adorn the walls. There are exits to the north, west, and east.-6,2,0,7-0-0
-2-Room2-You are in a long and dark corridor with the only light from the flicker of your torches. There are exits to the dark unknown north and previous room in the east.-3,0,0,1-0-0
+2-Room2-You are in a long and dark corridor with the only light from the flicker of your torches. There are exits to the dark unknown north and the entry room in the east.-3,0,0,1-0-0
 3-Room3-The dark corridor continues. You think you see a blood splatter on the wall, but you're unsure from the lack of light. There are exits to the north and south.-4,0,2,0-0-0
-4-Room4-It seems the masonry of the corridor suddenly ends in an old rusty door to the west built into a natural rock wall. You came from the south.-0,5,3,0-0-0
+4-Room4-It seems the masonry of the corridor suddenly ends in an old rusty door to the west built into a natural rock wall and a hallway to the south.-0,5,3,0-0-0
 5-Room5-You pull open the door and hear the scrape of its opening echo throughout what must be a massive room. Peering inside, you see a vast cavern. Stalactites drip down from the ceiling in sharp points. It appears to be a dead end with the only exit where you came from to the east.-0,0,0,4-1-0
 6-Room6-PlaceHolder. There are exits to the south and east.-0,0,1,8-0-0
 7-Room7-PlaceHolder. There are exits to the north and west.-8,1,0,0-0-0

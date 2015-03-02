@@ -15,6 +15,15 @@ public class HeroFactory implements CharacterFactory
 		else
 		if(name.equals("Paladin"))
 			return new Paladin(statFact.getStats("Paladin"));
+		else
+		if(name.equals("Cleric"))
+			return new Cleric(statFact.getStats("Cleric"));
+		else
+		if(name.equals("Ranger"))
+			return new Ranger(statFact.getStats("Ranger"));
+		else
+		if(name.equals("Barbarian"))
+			return new Barbarian(statFact.getStats("Barbarian"));
 		
 		return null;
 	}

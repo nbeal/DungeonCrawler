@@ -15,6 +15,7 @@ public class Game
     private static Room 	_current;
     private static boolean 	_exit;
     private static Scan 	_scan;
+    private static String   _previous
     
     public static void initialize()
     {
@@ -26,6 +27,7 @@ public class Game
         _current = new Room(); _current = _rooms[0];
         _exit 	 = false;
         _keys	 = 0;
+        _previous= "south";
     }
     
     public static void main(String[] args)
@@ -36,7 +38,7 @@ public class Game
         Scanner scanner = new Scanner(System.in);
         while(!_exit)
         {
-            System.out.printf("\nCurrent room id is " + _current.getID() + ". " + _current.getDescription() + " ");
+            System.out.printf("\nCurrent room id is " + _current.getID() + ". " + _current.getDescription() + " You came from the " + _previous + ". ");
             if(_current.getKey() != 0) { System.out.printf("There appears to be a shiny key in the corner."); }
             System.out.printf("\n\nWhich direction would you like to move to?\n> ");
             input = scanner.nextLine();
@@ -66,10 +68,10 @@ public class Game
 			System.out.println("\nNothing to pick up...");
 			return;
 		}
-		moveRoom(_current.getDirection(userInput));
+		moveRoom(_current.getDirection(userInput), userInput);
 	}
 	
-	public static void moveRoom(int direction)
+	public static void moveRoom(int direction, String userInput)
 	{
 	    if(direction == 0) //invalid direction
 	    {
@@ -99,6 +101,7 @@ public class Game
     	    try{
     	    	_current.setCleared(true);
     	        _current = _rooms[direction-1]; //Moving room 
+    	        _previous = userInput;
     	    }catch(Exception e)
     	    {
     	        System.out.println("You tried to walk through walls!");
