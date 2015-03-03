@@ -9,6 +9,7 @@ import DesignPatternsFinal.DamageHandler;
 
 public abstract class DungeonCharacter
 {
+	private int MaxHealth;
 	private int hitPoints;
 	private int strength;
 	private int dexterity;
@@ -34,6 +35,7 @@ public abstract class DungeonCharacter
 	
 	public DungeonCharacter()
 	{
+		this.MaxHealth = 0;
 		this.hitPoints = 0;
 		this.strength = 0;
 		this.dexterity = 0;
@@ -52,6 +54,7 @@ public abstract class DungeonCharacter
 	{
 		int[] stats = statistics.getStats();
 		
+		this.MaxHealth = stats[0];
 		this.hitPoints = stats[0];
 		this.strength = stats[1];
 		this.dexterity = stats[2];
@@ -72,6 +75,7 @@ public abstract class DungeonCharacter
 	
 	public DungeonCharacter(int hp, int str, int dex, int stam, int def, String tempName)
 	{
+		this.MaxHealth = hp;
 		this.hitPoints = hp;
 		this.strength = str;
 		this.dexterity = dex;
@@ -125,6 +129,11 @@ public abstract class DungeonCharacter
 		
 		if(this.hitPoints < 0)
 			this.hitPoints = 0;
+		
+		else if (this.hitPoints > this.MaxHealth)
+		{
+			this.hitPoints = this.MaxHealth;
+		}
 		return hitDamage;
 	}
 	
@@ -234,13 +243,16 @@ public abstract class DungeonCharacter
 	
 	public int getDex()
 	{
-	
 		return dexterity;
 	}
 
 	public void heal(int i) 
 	{
 		this.hitPoints += i;
+		if (this.hitPoints > this.MaxHealth)
+		{
+			this.hitPoints = this.MaxHealth;
+		}
 	}
 	
 	public int getExp()

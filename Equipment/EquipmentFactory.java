@@ -92,4 +92,39 @@ public class EquipmentFactory
 		}
 		return loaded;
 	}
+	public Equipment loadEquipment(String target, int value)
+	{
+		Equipment loaded = new NullEquipment();
+		if (valid)
+		{
+			
+			try
+			{
+				//int equipment = 1 + (int) (Math.random() * (totalEquipment - 1));
+		        NodeList nodeLst = equipmentFile.getElementsByTagName(target);
+		        
+		        Node fstNode = nodeLst.item(0);
+		        Element fstElmnt = (Element) fstNode;
+		        NodeList fstNmElmntLst = fstElmnt.getElementsByTagName("value" + value);
+		        Element fstNmElmnt = (Element) fstNmElmntLst.item(0);
+		        NodeList fstNm = fstNmElmnt.getChildNodes();
+		        String equipDetail = ((Node) fstNm.item(0)).getNodeValue();
+		        
+		        String[] stats = equipDetail.split("~");
+		        if (stats[0].equals("WEAPON"))
+		        {
+		        	loaded = new Weapon(stats);
+		        }
+		        else if (stats[0].equals("ARMOR"))
+		        {
+		        	loaded = new Armor(stats);
+		        }
+		     } 
+		     catch (Exception e) 
+			{
+		        e.printStackTrace();
+		     }
+		}
+		return loaded;
+	}
 }

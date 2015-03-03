@@ -21,6 +21,7 @@ public class Blob extends Enemy
 		*/
 		attacktype = new Tackle();
 		special = new NullSpecialAttack();
+		this.setExp(10);
 	}
 	
 }
