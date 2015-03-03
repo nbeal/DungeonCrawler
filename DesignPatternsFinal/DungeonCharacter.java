@@ -4,6 +4,7 @@ package DesignPatternsFinal;
 import Attack.AttackType;
 import Attack.SpecialAttack;
 import Equipment.Equipment;
+import Equipment.NullEquipment;
 import DesignPatternsFinal.DamageHandler;
 
 public abstract class DungeonCharacter
@@ -19,12 +20,17 @@ public abstract class DungeonCharacter
 	protected SpecialAttack special;
 	
 	
-	protected Equipment head;
-	protected Equipment torso;
-	protected Equipment hands;
-	protected Equipment feet;
-	protected Equipment legs;
-	protected Equipment weapon;
+	protected Equipment head = new NullEquipment();
+	protected Equipment torso = new NullEquipment();
+	protected Equipment hands = new NullEquipment();
+	protected Equipment feet = new NullEquipment();
+	protected Equipment legs = new NullEquipment();
+	protected Equipment weapon = new NullEquipment();
+	
+	private int experience;
+	private int nextLevel;
+	private int currentLevel;
+	private int points;
 	
 	public DungeonCharacter()
 	{
@@ -36,6 +42,10 @@ public abstract class DungeonCharacter
 		this.defenses = DamageHandler.fillArray("");
 		
 		this.name = "Nothing";
+		this.experience = 0;
+		this.nextLevel = 20;
+		this.currentLevel = 1;
+		this.points = 0;
 	}
 	
 	public DungeonCharacter(String enName, Stats statistics)
@@ -52,6 +62,11 @@ public abstract class DungeonCharacter
 		defenses = DamageHandler.fillArray(def);
 		
 		this.name =enName;
+		
+		this.experience = 0;
+		this.nextLevel = 20;
+		this.currentLevel = 1;
+		this.points = 0;
 
 	}
 	
@@ -66,14 +81,21 @@ public abstract class DungeonCharacter
 		sdef = sdef + "," + def;
 		defenses = DamageHandler.fillArray(sdef);
 		this.name = tempName;
+		
+		this.experience = 0;
+		this.nextLevel = 20;
+		this.currentLevel = 1;
+		this.points = 0;
 	}
-
 	
 	public int attack(DungeonCharacter defender)
 	{
 		String attack = attacktype.attack();
 		int[] damage = DamageHandler.fillArray(attack);
-		damage = DamageHandler.addToArray(damage, weapon.getAttack());
+		if (damage[DamageHandler.DAMAGE_HEAL] != 0)
+		{
+			damage = DamageHandler.addToArray(damage, weapon.getAttack());
+		}
 		return defender.modifyHealth(damage);
 		//return attacktype.attack(defender);
 	}
@@ -89,7 +111,6 @@ public abstract class DungeonCharacter
 			String attack = special.attack();
 			int[] damage = DamageHandler.fillArray(attack);
 			return defender.modifyHealth(damage);
-			
 		}
 		System.out.println("Not enough stamina to use");
 		return 1234567;
@@ -142,11 +163,6 @@ public abstract class DungeonCharacter
 			
 		return true;
 	}
-	
-	/*public int calcTotalDef()
-	{
-		return defense + head.getDef() + torso.getDef() + hands.getDef() + legs.getDef() + feet.getDef();
-	}*/
 	
 	public Equipment equip(Equipment item)
 	{
@@ -225,5 +241,62 @@ public abstract class DungeonCharacter
 	public void heal(int i) 
 	{
 		this.hitPoints += i;
+	}
+	
+	public int getExp()
+	{
+		return this.experience;
+	}
+	
+	public void setExp(int exp)
+	{
+		this.experience = exp;
+	}
+	
+	public void gainExperience(int exp)
+	{
+		this.experience += exp;
+		if (this.experience >= this.nextLevel)
+		{
+			this.currentLevel++;
+			System.out.println(this.name + " has gained a level, they are now level " + this.currentLevel);
+			this.points++;
+			this.experience -= this.nextLevel;
+			this.nextLevel += 20;
+		}
+	}
+	
+	public void spendPoint()
+	{
+		if (this.points > 0)
+		{
+			System.out.print(stats());
+			System.out.println("Which would you like to increase?");
+			//choice;
+			int choice = 0;
+			switch (choice )
+			{
+				case 1:
+					
+					break;
+				case 2:
+					
+					break;
+				case 3:
+					
+					break;
+				case 4:
+					
+					break;
+				case 5:
+					
+					break;
+			}
+		}
+	}
+
+	private char[] stats() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
