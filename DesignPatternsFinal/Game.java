@@ -3,6 +3,11 @@ package DesignPatternsFinal;
 import java.io.*;
 import java.util.*;
 
+import Heroes.Hero;
+import Heroes.HeroFactory;
+import Items.HealthPotion;
+import Items.StaminaPotion;
+
 //Main Game Starter
 public class Game
 {
@@ -16,7 +21,8 @@ public class Game
     private static boolean 	_exit;
     private static Scan 	_scan;
     private static String   _previous;
-    
+    private static Inventory inventory = Inventory.getInventory();
+    private static DungeonCharacter[] heroes = new Hero[4];
     public static void initialize()
     {
         initialMessage();
@@ -28,6 +34,9 @@ public class Game
         _exit 	 = false;
         _keys	 = 0;
         _previous= "south";
+        
+        inventory.addItem(new HealthPotion());
+        inventory.addItem(new StaminaPotion());
     }
     
     public static void main(String[] args)
@@ -36,6 +45,9 @@ public class Game
         String input, userInput;
         
         Scanner scanner = new Scanner(System.in);
+
+        selectHeroes(scanner);
+        
         while(!_exit)
         {
             System.out.printf("\nCurrent room id is " + _current.getID() + ". " + _current.getDescription() + " You came from the " + _previous + ". ");
@@ -48,6 +60,31 @@ public class Game
         scanner.close();
     }
 	
+    public static void selectHeroes(Scanner input)
+    {
+    	HeroFactory factory = new HeroFactory();
+    	String[] possibleHeroes = factory.getTypes();
+    	
+    	System.out.println("Choose your party\n");
+    	
+    	for(int k = 0; k < 4; k++)
+    	{
+    		int choice = 0;
+    		for(int j = 1; j <= possibleHeroes.length; j++)
+    		{
+    			System.out.println(j + ") " + possibleHeroes[j-1]);
+    		}
+    		
+    		while(choice==0 || choice < 0 || choice > possibleHeroes.length)
+    		{
+    			choice = input.nextInt();
+    		}
+    		
+    		heroes[k] = factory.order(possibleHeroes[choice - 1]);
+    	}
+    	
+    }
+    
 	public static void checkCommand(String userInput)
 	{
 		if(userInput == null)
@@ -116,12 +153,13 @@ public class Game
     	Random rand = new Random();
     	int randNum = rand.nextInt(100) + 1;
     	
+    	
     	//have not cleared room yet
     	if(!_current.getCleared())
     	{
 	    	if(randNum < _encounterChance) 
 	    	{
-	    		//start Battle
+	    		Battle battle = new Battle(heroes, inventory);
     		}
     	}
     	

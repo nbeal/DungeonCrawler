@@ -1,36 +1,36 @@
 package DesignPatternsFinal;
-
 import java.util.*;
 
 import Enemies.EnemyFactory;
-import Heroes.HeroFactory;
-import DesignPatternsFinal.CharacterFactory;
-
 
 public class Battle
 {
-	public static void main(String[] args)
+	DungeonCharacter[] heroes;
+	DungeonCharacter[] enemies;
+	Inventory inventory;
+	public Battle(DungeonCharacter[] heroes, Inventory inventory)
 	{
+		this.heroes = heroes;
+		this.inventory= inventory;
+		
 		CharacterFactory enFact = new EnemyFactory();
 		DungeonCharacter monster1 = enFact.order("Blob");
 		DungeonCharacter monster2 = enFact.order("Blob");
 		DungeonCharacter monster3 = enFact.order("Blob");
 		
-		enFact = new HeroFactory();
-		DungeonCharacter hero1 = enFact.order("Wizard");
-		DungeonCharacter hero2 = enFact.order("Paladin");
 		
-		DungeonCharacter[] heroes = {hero1, hero2};
-		DungeonCharacter[] enemies = {monster1, monster2, monster3};
-		
-		battle(heroes, enemies);
-		//monster1.attack(monster2);
-		//System.out.println(monster2.getHealth());
-		
+		enemies = new DungeonCharacter[] {monster1, monster2, monster3};
 	}
 	
-	public static void battle(DungeonCharacter[] heroes, DungeonCharacter[] enemies)
+	public void printDescription()
 	{
+		System.out.print("A group of enemies appear!");
+
+	}
+	
+	public void startBattle()
+	{
+		
 		DungeonCharacter[] order = concat(heroes, enemies);
 		boolean heroStatus = checkStatus(heroes);
 		boolean enemyStatus = checkStatus(enemies);
@@ -43,6 +43,7 @@ public class Battle
 					if (order[x].isAlive())
 					{
 						int damage = 0;
+						int item = 0;
 						//Select Action
 						
 						if(order[x].isHero())
@@ -57,6 +58,14 @@ public class Battle
 							System.out.println("");
 						}
 						int action = selectAction(order[x]);
+						
+						if(action == 3)
+						{
+							
+							inventory.printConsumables();
+							item = inventory.selectItem(new Scanner(System.in));
+						}
+						
 						//Select Target (print dead if dead)
 						int target = selectTarget(order, heroes, x);
 						//Damage Target
@@ -64,14 +73,23 @@ public class Battle
 						{
 							damage = order[x].attack(order[target]);
 						}
-						else
+						else if(action == 2)
 						{
 							damage =  order[x].special(order[target]);
 						}
-						System.out.println(order[x].getName() + " hit " + order[target].getName() + " for " + damage + " damage!" );
-						//check status for each group;
-						heroStatus = checkStatus(heroes);
-						enemyStatus = checkStatus(enemies);
+						else if(action == 3)
+						{
+							
+							System.out.print(order[target].getName() + " ");
+							inventory.consume(item - 1, order[target]);
+							
+						}
+							if(action != 3)
+								System.out.println(order[x].getName() + " hit " + order[target].getName() + " for " + damage + " damage!" );
+							//check status for each group;
+							heroStatus = checkStatus(heroes);
+							enemyStatus = checkStatus(enemies);
+
 					}
 				}			
 			}
@@ -89,7 +107,7 @@ public class Battle
 	
 	
 	
-	private static int selectTarget(DungeonCharacter[] order, DungeonCharacter[] heroes, int x)
+	private int selectTarget(DungeonCharacter[] order, DungeonCharacter[] heroes, int x)
 	{
 		// TODO Auto-generated method stub
 		if (order[x].isHero())
@@ -132,19 +150,58 @@ public class Battle
 		}
 	}
 
-	private static int selectAction(DungeonCharacter attacker)
+	private int selectAction(DungeonCharacter attacker)
 	{
 		int choice;
 		if (attacker.isHero())
 		{
 			System.out.println("\nWhat will " + attacker.getName() + " do?		Hp:" + attacker.getHealth() + " Stamina:" + attacker.getStamina());
-			System.out.println("1) " + attacker.attacktype.getAttackName()+ " \n2) " + attacker.special.getAttackName() + "\n3) Nothing\n");
+			System.out.println("1) " + attacker.attacktype.getAttackName()+ " \n2) " + attacker.special.getAttackName() + "\n3) Use Item\n");
 			Scanner kb = new Scanner(System.in);
 			choice = kb.nextInt();
-			while (choice > 3 || choice < 1)
+
+			
+			if(choice == 2)
 			{
+				if(attacker.getStamina() < attacker.special.getStamUsed())
+				{
+					System.out.println("Not enough stamina!");
+					choice = 10;
+				}
+			}
+			
+			if(choice == 3)
+			{
+				if(!inventory.haveConsumables())
+				{
+					System.out.println("You have no consumable items!");
+					choice = 10;
+				}
+			}
+			
+			while ((choice > 3 || choice < 1))
+			{
+
 				System.out.println("Invalid, pick again");
+				
 				choice = kb.nextInt();
+				
+				if(choice == 2 && (attacker.getStamina() < attacker.special.getStamUsed()))
+				{
+					System.out.println("Not enough stamina!");
+					choice = 10;
+				}
+				
+				if(choice == 3)
+				{
+					if(!inventory.haveConsumables())
+					{
+						System.out.println("You have no consumable items!");
+						choice = 10;
+					}
+				}
+				
+				
 			}
 		}
 		else
@@ -154,7 +211,7 @@ public class Battle
 		return choice;
 	}
 
-	private static boolean checkStatus(DungeonCharacter[] dudes)
+	private boolean checkStatus(DungeonCharacter[] dudes)
 	{
 		boolean temp = false;
 		for (int x = 0; x < dudes.length; x++ )
@@ -164,7 +221,7 @@ public class Battle
 		return temp;
 	}
 
-	private static DungeonCharacter[] concat(DungeonCharacter[] heroes, DungeonCharacter[] enemies)
+	private DungeonCharacter[] concat(DungeonCharacter[] heroes, DungeonCharacter[] enemies)
 	{
 		
 		DungeonCharacter[] temp = new DungeonCharacter[heroes.length + enemies.length];
@@ -189,7 +246,7 @@ public class Battle
 		return temp;
 	}
 
-	 private static DungeonCharacter[] MirrorSort(int[] initative, DungeonCharacter[] characters)
+	 private DungeonCharacter[] MirrorSort(int[] initative, DungeonCharacter[] characters)
 	  {
 	  		 int sorter = 0;
 	         int sorted = 0;
