@@ -1,5 +1,12 @@
+package DesignPatternsFinal;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Equipment.Equipment;
+import Heroes.Hero;
+import Items.ConsumableItem;
+import Items.Item;
 
 public class Inventory 
 {

@@ -75,7 +75,7 @@ public class EquipmentFactory
 		        NodeList fstNm = fstNmElmnt.getChildNodes();
 		        String equipDetail = ((Node) fstNm.item(0)).getNodeValue();
 		        
-		        String[] stats = equipDetail.split(":");
+		        String[] stats = equipDetail.split("~");
 		        if (stats[0].equals("WEAPON"))
 		        {
 		        	loaded = new Weapon(stats);

@@ -1,8 +1,9 @@
 package Equipment;
 
 import DesignPatternsFinal.DamageHandler;
+import Items.Item;
 
-public class Equipment
+public class Equipment implements Item
 {
 	private int hitPoints;
 	private int strength;
@@ -90,6 +91,18 @@ public class Equipment
 	public int getStrength() 
 	{
 		return this.strength;
+	}
+
+	@Override
+	public boolean isConsumable() 
+	{
+		return false;
+	}
+
+	@Override
+	public String getName() 
+	{
+		return this.name;
 	}
 
 }

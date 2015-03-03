@@ -1,3 +1,6 @@
+package Items;
+
+import DesignPatternsFinal.DungeonCharacter;
 
 public interface ConsumableItem extends Item
 {

@@ -221,4 +221,9 @@ public abstract class DungeonCharacter
 	
 		return dexterity;
 	}
+
+	public void heal(int i) 
+	{
+		this.hitPoints += i;
+	}
 }

@@ -9,6 +9,6 @@ public class Heal extends SpecialAttack
 		name = "Heal";
 		damage = -10;
 		stamUsed = 10;
-		damageType = DamageHandler.DAMAGE_NORMAL;
+		damageType = DamageHandler.DAMAGE_HEAL;
 	}
 }

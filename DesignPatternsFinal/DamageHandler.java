@@ -5,13 +5,14 @@ public class DamageHandler
 	private static DamageHandler instance = null;
 	
 	//number of 0's equals number of damage types
-	private static int[]	ARRAY_TEMPLATE = new int[] {0,0,0,0,0};
+	private static int[]	ARRAY_TEMPLATE = new int[] {0,0,0,0,0,0};
 	/** All of the damage types */
 	public static int	DAMAGE_NORMAL = 0;
 	public static int	DAMAGE_PIERCE = 1;
 	public static int	DAMAGE_FIRE = 2;
 	public static int	DAMAGE_WATER = 3;
 	public static int	DAMAGE_ELEC = 4;
+	public static int 	DAMAGE_HEAL = 5;
 	
 	private DamageHandler()
 	{

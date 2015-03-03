@@ -1,3 +1,7 @@
+package Items;
+
+import DesignPatternsFinal.DungeonCharacter;
+
 
 public class HealthPotion implements ConsumableItem
 {
