@@ -5,7 +5,7 @@ public class DamageHandler
 	private static DamageHandler instance = null;
 	
 	//number of 0's equals number of damage types
-	private static int[]	ARRAY_TEMPLATE = new int[] {0,0,0,0,0,0};
+	private static int[]	ARRAY_TEMPLATE = new int[] {0,0,0,0,0,0,0};
 	/** All of the damage types */
 	public static int	DAMAGE_NORMAL = 0;
 	public static int	DAMAGE_PIERCE = 1;
@@ -13,6 +13,7 @@ public class DamageHandler
 	public static int	DAMAGE_WATER = 3;
 	public static int	DAMAGE_ELEC = 4;
 	public static int 	DAMAGE_HEAL = 5;
+	public static int 	DAMAGE_COLD = 6;
 	
 	private DamageHandler()
 	{
@@ -80,6 +81,7 @@ public class DamageHandler
 		damageTaken += Math.max(0, Damages[DAMAGE_FIRE] - defender[DAMAGE_FIRE] * 1);
 		damageTaken += Math.max(0, Damages[DAMAGE_WATER] - defender[DAMAGE_WATER] * 1);
 		damageTaken += Math.max(0, Damages[DAMAGE_ELEC] - defender[DAMAGE_ELEC] * 1);
+		damageTaken += Math.max(0, Damages[DAMAGE_COLD] - defender[DAMAGE_COLD] * 1);
 		return damageTaken;
 	}
 
