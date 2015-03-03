@@ -4,14 +4,14 @@ import java.io.*;
 import java.util.*;
 
 import Heroes.Hero;
-import Heroes.HeroFactory;
 import Items.HealthPotion;
 import Items.StaminaPotion;
+import Heroes.HeroFactory;
 
 //Main Game Starter
 public class Game
 {
-    private static int 		_encounterChance = 80; //chance of encounter in unchecked room
+    private static int 		_encounterChance = 100; //chance of encounter in unchecked room
     private static int 		_clearedChance = 5;    //chance of encounter in checked room
 	
     private static int 		_keys;
@@ -160,6 +160,8 @@ public class Game
 	    	if(randNum < _encounterChance) 
 	    	{
 	    		Battle battle = new Battle(heroes, inventory);
+	    		battle.printDescription();
+	    		battle.startBattle();
     		}
     	}
     	

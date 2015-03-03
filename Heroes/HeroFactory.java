@@ -28,7 +28,8 @@ public class HeroFactory implements CharacterFactory
 		return null;
 	}
 	
-	public String[] getTypes()
+
+	public String[] getTypes() 
 	{
 		return new String[] {"Wizard", "Paladin", "Cleric", "Ranger", "Barbarian"};
 	}
