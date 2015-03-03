@@ -11,6 +11,11 @@ public class Stats
 			stats = new int[] {12, 3, 4, 1, 1};
 		}
 		else
+		if(name.equals("Dread King")) //final boss
+		{
+			stats = new int[] {200, 10, 5, 75, 10};
+		}
+		else
 		if(name.equals("Wizard"))
 		{
 			stats = new int[] {30, 3, 5, 30, 1};
