@@ -1,12 +1,14 @@
 package DesignPatternsFinal;
 //Dungeon Character class written by Nicholas Valentine
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Attack.AttackType;
 import Attack.SpecialAttack;
 import Equipment.Equipment;
 import Equipment.NullEquipment;
+import Items.OverTimeItem;
 import DesignPatternsFinal.DamageHandler;
 
 public abstract class DungeonCharacter
@@ -34,6 +36,8 @@ public abstract class DungeonCharacter
 	private int nextLevel;
 	private int currentLevel;
 	private int points;
+	
+	ArrayList<OverTimeItem> consumablesInUse = new ArrayList<OverTimeItem>();
 	
 	public DungeonCharacter()
 	{
@@ -165,6 +169,40 @@ public abstract class DungeonCharacter
 	public int getHealth()
 	{
 		return hitPoints;
+	}
+	
+	public void modifyStrength(int s)
+	{
+		strength += s;
+	}
+	
+	public void modifyDexterity(int d)
+	{
+		dexterity += d;
+	}
+	
+	public void addConsumableInUse(OverTimeItem item)
+	{
+		consumablesInUse.add(item);
+	}
+	
+	public void removeConsumableInUse(OverTimeItem item)
+	{
+		consumablesInUse.remove(item);
+	}
+	
+	public void reduceConsumables()
+	{
+		boolean usedUp = false;
+		for(int k = 0; k < consumablesInUse.size(); k++)
+		{
+			usedUp = consumablesInUse.get(k).reduceTime();
+			
+			if(usedUp)
+			{
+				consumablesInUse.get(k).undo(this);
+			}
+		}
 	}
 	
 	public boolean isAlive()

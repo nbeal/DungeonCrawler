@@ -93,6 +93,9 @@ public class Battle
 					}
 				}			
 			}
+			
+			reduceAllConsumables(order);
+			
 		}
 		if (heroStatus)
 		{
@@ -286,5 +289,13 @@ public class Battle
 	         }
 			return characters;
 		}
+	 
+	 public void reduceAllConsumables(DungeonCharacter[] order)
+	 {
+		 for(int k = 0; k < order.length; k++)
+		 {
+			 order[k].reduceConsumables();
+		 }
+	 }
 
 }

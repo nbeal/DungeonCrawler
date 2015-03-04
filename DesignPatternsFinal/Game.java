@@ -6,6 +6,7 @@ import java.util.*;
 import Heroes.Hero;
 import Items.HealthPotion;
 import Items.StaminaPotion;
+import Items.StrengthPotion;
 import Heroes.HeroFactory;
 
 //Main Game Starter
@@ -37,6 +38,7 @@ public class Game
         
         inventory.addItem(new HealthPotion());
         inventory.addItem(new StaminaPotion());
+        inventory.addItem(new StrengthPotion());
     }
     
     public static void main(String[] args)

@@ -1,6 +1,7 @@
 package DesignPatternsFinal;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 public class StatsFactory
 {
@@ -28,9 +29,24 @@ public class StatsFactory
 		}
 			return stats;
 	}
-		public int getTotalStatsMade() 
+	
+	public int getTotalStatsMade() 
+	{
+		return StatMap.size();
+	}
+	
+	public void levelUpAll()
+	{
+		for(Entry<String, Stats> entry : StatMap.entrySet()) 
 		{
-			return StatMap.size();
+		    String key = entry.getKey();
+		    Stats value = entry.getValue();
+
+		    value.levelUp();
+		    
+		    StatMap.put(key, value);
 		}
+	}
+	
 	
 }
