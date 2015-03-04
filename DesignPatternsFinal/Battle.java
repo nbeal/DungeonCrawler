@@ -97,6 +97,17 @@ public class Battle
 		if (heroStatus)
 		{
 			System.out.println("You won the battle!");
+			int expGained = 0;
+			for (int i = 0; i < enemies.length; i++)
+			{
+				expGained = enemies[i].getExp();
+			}
+			System.out.println("You gained " + expGained + " experience");
+			for (int i = 0; i < heroes.length; i++)
+			{
+				if (heroes[i].isAlive())
+					heroes[i].gainExperience(expGained);
+			}
 		}
 		else
 		{
