@@ -119,7 +119,7 @@ public class Game
         else if(userInput.equals("status"))  //ADD STATUS HP/STAMINA OF PARTY
         {
             System.out.println("\nYou have " + _keys + " key(s).");
-            CharacterPrint.getInstance().StatusPrint(heroes);
+            CharacterPrint.getInstance().StatusPrint(heroes, "Party");
             return;
         }
         else if(userInput.equals("level"))

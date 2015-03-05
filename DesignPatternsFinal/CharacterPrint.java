@@ -26,12 +26,12 @@ public class CharacterPrint
 		return instance;
 	}
 	
-	public void StatusPrint(DungeonCharacter[] heroes)
+	public void StatusPrint(DungeonCharacter[] heroes, String declaration)
 	{
-		System.out.println("Party: ");
-        for(int i = 0; i < 4; i++)
+		System.out.println(declaration + ":");
+        for(int i = 0; i < heroes.length; i++)
         {
-            System.out.println(heroes[i].getName() + " HP: " + heroes[i].getHealth() + " STAM: " + heroes[i].getStamina());
+            System.out.println(heroes[i].getName() + "\tHP: " + heroes[i].getHealth() + "\tSTAM: " + heroes[i].getStamina());
         }
 	}
 	
@@ -57,7 +57,8 @@ public class CharacterPrint
 	
 	public int battleCharacterSelect(DungeonCharacter[] order, DungeonCharacter[] heroes, DungeonCharacter[] enemies, int x)
 	{
-		int selector = Arrays.asList(order).indexOf(heroes[x]);
+		DungeonCharacter temp = order[x];
+		int selector = Arrays.asList(heroes).indexOf(temp);
 		int choice = -1;
 		while(choice == -1)
 		{
@@ -122,5 +123,29 @@ public class CharacterPrint
 		}
 		
 		return choice - 1;
+	}
+
+	public static void printOrder(DungeonCharacter[] order, int x)
+	{
+		System.out.println();
+		System.out.println("Order");
+		if (order[x].isAlive())
+		{
+			for (int i = 0; i < order.length; i++)
+			{
+				if (i == x && order[i].isAlive())
+				{
+					System.out.print("<Current> " + order[i].getName() + ", ");
+				}
+				else if (i == (x + 1) && order[i].isAlive())
+				{
+					System.out.print("<Next> " + order[i].getName() + ", ");
+				}
+				else
+					System.out.print(order[i].getName() + ", ");
+			}
+			System.out.println();
+		}
+		
 	}
 }

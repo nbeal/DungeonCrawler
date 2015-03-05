@@ -38,6 +38,7 @@ public class Battle
 		{
 			for (int x = 0; x < order.length; x++)
 			{
+				CharacterPrint.printOrder(order, x);
 				if (heroStatus && enemyStatus)
 				{
 					if (order[x].isAlive())
@@ -48,14 +49,12 @@ public class Battle
 						
 						if(order[x].isHero())
 						{
-							System.out.println("\n-----------------------------------------------------------------");
-							for(int j = 0; j < order.length; j++)
-							{
-								if(!order[j].isHero())
-								System.out.print(order[j].getName() + " Hp:" + order[j].getHealth() + "     ");
-							}
-							
-							System.out.println("");
+							System.out.println("-----------------------------------------------------------------");
+							CharacterPrint.getInstance().StatusPrint(heroes, "Heroes");
+							System.out.println("-----------------------------------------------------------------");
+							CharacterPrint.getInstance().StatusPrint(enemies, "Enemies");
+							System.out.println("-----------------------------------------------------------------");
+	
 						}
 						int action = selectAction(order[x]);
 						
@@ -127,31 +126,6 @@ public class Battle
 		if (order[x].isHero())
 		{
 			return CharacterPrint.getInstance().battleCharacterSelect(order, heroes, enemies, x);
-			/*System.out.println("Select a target");
-			for (int i = 0; i < order.length; i++)
-			{
-				if (i == x)
-				{
-					System.out.println(i + 1 + ": Self");
-				}
-				else
-				{
-					System.out.print(i + 1 + ": " + order[i].getName());
-					if (order[i].isAlive())
-						System.out.println(" Status: Alive");
-					else
-						System.out.println(" Status: Dead");
-				}
-			}
-			Scanner kb = new Scanner(System.in);
-			int choice = kb.nextInt();
-			while (choice > (order.length) || choice < 1)
-			{
-				System.out.println("Invalid, pick again");
-				choice = kb.nextInt();
-			}
-			return choice - 1;
-			*/
 		}
 		else
 		{
@@ -217,8 +191,6 @@ public class Battle
 						choice = 10;
 					}
 				}
-				
-				
 			}
 		}
 		else
