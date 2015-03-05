@@ -126,7 +126,8 @@ public class Battle
 		// TODO Auto-generated method stub
 		if (order[x].isHero())
 		{
-			System.out.println("Select a target");
+			return CharacterPrint.getInstance().battleCharacterSelect(order, heroes, enemies, x);
+			/*System.out.println("Select a target");
 			for (int i = 0; i < order.length; i++)
 			{
 				if (i == x)
@@ -150,6 +151,7 @@ public class Battle
 				choice = kb.nextInt();
 			}
 			return choice - 1;
+			*/
 		}
 		else
 		{

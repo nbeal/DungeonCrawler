@@ -119,15 +119,13 @@ public class Game
         else if(userInput.equals("status"))  //ADD STATUS HP/STAMINA OF PARTY
         {
             System.out.println("\nYou have " + _keys + " key(s).");
-            System.out.println("Party: ");
-            for(int i = 0; i < 4; i++)
-            {
-                System.out.println(heroes[i].getName() + " HP: " + heroes[i].getHealth() + " STAM: " + heroes[i].getStamina());
-            }
+            CharacterPrint.getInstance().StatusPrint(heroes);
             return;
         }
-            
-            return;
+        else if(userInput.equals("level"))
+        {
+        	System.out.println("Who would you like to level up?");
+        	//print out list of options
         }
         else if(userInput.equals("get"))
         {
