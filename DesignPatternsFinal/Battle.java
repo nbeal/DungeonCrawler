@@ -171,6 +171,7 @@ public class Battle
 		{
 			System.out.println("\nWhat will " + attacker.getName() + " do?		Hp:" + attacker.getHealth() + " Stamina:" + attacker.getStamina());
 			System.out.println("1) " + attacker.attacktype.getAttackName()+ " \n2) " + attacker.special.getAttackName() + "\n3) Use Item\n");
+            System.out.printf(">");
 			Scanner kb = new Scanner(System.in);
 			choice = kb.nextInt();
 
@@ -197,7 +198,7 @@ public class Battle
 			{
 
 				System.out.println("Invalid, pick again");
-				
+                System.out.printf(">");
 				choice = kb.nextInt();
 				
 				if(choice == 2 && (attacker.getStamina() < attacker.special.getStamUsed()))

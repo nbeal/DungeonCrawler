@@ -38,7 +38,17 @@ public class Menu
 			case "east":
 				System.out.println("\nGoing east...");
 				return userInput;
-			
+
+            case "unlock door":
+                userInput = "unlock";
+                return userInput;
+
+            case "unlock":
+                return userInput;
+
+            case "status":
+                return userInput;
+
 			case "take":
 			    userInput = "get";
 			    return userInput;
@@ -52,11 +62,12 @@ public class Menu
 			
 			case "help":
 				System.out.println("\nPossible Commands:");
-				System.out.println("north\nwest\nsouth\neast\nget/pick up/take\nexit\nhelp");
+				System.out.println("north\nwest\nsouth\neast\nstatus\nunlock\nget/pick up/take\nexit\nhelp");
 				return null;
 			
 			default:
-				System.out.println("\nInvalid Command");
+				System.out.println("\nInvalid Command!");
+                System.out.println("Type help for a list of commands.");
 				return null;
 		}
 	}

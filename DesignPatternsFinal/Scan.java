@@ -20,7 +20,7 @@ public class Scan
         
         Scanner roomScan;
         try{
-            roomScan = new Scanner(new File("C:/Users/Kevin/Desktop/DesignPatternsFinal/DesignPatternsFinal/Rooms.txt"));
+            roomScan = new Scanner(new File("C:\\Users\\Sapphire\\Documents\\DesignPatternsFinal\\Final\\src\\DesignPatternsFinal\\Rooms.txt"));
             
             int i = 0;
         
