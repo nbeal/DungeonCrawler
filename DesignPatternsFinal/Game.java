@@ -116,17 +116,19 @@ public class Game
             _exit = true;
             return;
         }
+        else if(userInput.equals("inventory"))
+        {
+            System.out.println("Accessing Party Inventory...\n");
+            return;
+        }
         else if(userInput.equals("status"))  //ADD STATUS HP/STAMINA OF PARTY
         {
             System.out.println("\nYou have " + _keys + " key(s).");
-            System.out.println("Party: ");
+            System.out.println("Party Statistics: ");
             for(int i = 0; i < 4; i++)
             {
                 System.out.println(heroes[i].getName() + " HP: " + heroes[i].getHealth() + " STAM: " + heroes[i].getStamina());
             }
-            return;
-        }
-            
             return;
         }
         else if(userInput.equals("get"))

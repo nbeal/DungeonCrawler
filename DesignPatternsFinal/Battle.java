@@ -114,7 +114,7 @@ public class Battle
 		}
 		else
 		{
-			System.out.println("You lost!");
+			System.out.println("--GAME OVER--");
 		}
 	}
 

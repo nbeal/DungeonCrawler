@@ -55,14 +55,25 @@ public class Menu
 			
 			case "get":
 			    return userInput;
-			
+
+            case "inventory":
+                return userInput;
+
+            case "inv":
+                userInput = "inventory";
+                return userInput;
+
+            case "stuff":
+                userInput = "inventory";
+                return userInput;
+
 			case "exit":
 				System.out.println("\nExiting...");
 				return userInput;
 			
 			case "help":
 				System.out.println("\nPossible Commands:");
-				System.out.println("north\nwest\nsouth\neast\nstatus\nunlock\nget/pick up/take\nexit\nhelp");
+				System.out.println("north\nwest\nsouth\neast\nstatus\ninventory/inv/stuff\nunlock\nget/pick up/take\nexit\nhelp");
 				return null;
 			
 			default:
