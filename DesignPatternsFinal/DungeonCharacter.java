@@ -20,6 +20,7 @@ public abstract class DungeonCharacter
 	private int stamina;
 	private int[] defenses;
 	private String name;
+	private String title;
 	
 	protected AttackType attacktype;
 	protected SpecialAttack special;
@@ -50,6 +51,7 @@ public abstract class DungeonCharacter
 		this.defenses = DamageHandler.fillArray("");
 		
 		this.name = "Nothing";
+		this.title = "The placeholder";
 		this.experience = 0;
 		this.nextLevel = 20;
 		this.currentLevel = 1;

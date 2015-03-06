@@ -10,6 +10,10 @@ public class Stats
 		{
 			stats = new int[] {12, 3, 4, 1, 1};
 		}
+        if(name.equals("Dread Lord"))
+        {
+            stats = new int[] {200, 10, 4, 50, 10};
+        }
 		else
 		if(name.equals("Wizard"))
 		{
@@ -32,7 +36,7 @@ public class Stats
 		}
 		if(name.equals("Ranger"))
 		{
-			stats = new int[] {40, 5, 8, 20, 5};
+			stats = new int[] {40, 5, 8, 22, 5};
 		}
 
 	}
