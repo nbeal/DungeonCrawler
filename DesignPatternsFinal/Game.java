@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import Heroes.Hero;
+import Items.FirePotion;
 import Items.HealthPotion;
 import Items.StaminaPotion;
 import Items.StrengthPotion;
@@ -38,7 +39,7 @@ public class Game
         
         inventory.addItem(new HealthPotion());
         inventory.addItem(new StaminaPotion());
-        inventory.addItem(new StrengthPotion());
+        inventory.addItem(new FirePotion());
     }
     
     public static void main(String[] args)

@@ -41,13 +41,13 @@ public class Stats
 		return this.stats;
 	}
 	
-	public void levelUp()
+	public void levelUp(int hp, int str, int dex, int stam, int def)
 	{
-		stats[0] += 5;
-		stats[1] += 5;
-		stats[2] += 5;
-		stats[3] += 5;
-		stats[4] += 5;
+		stats[0] += hp;
+		stats[1] += str;
+		stats[2] += dex;
+		stats[3] += stam;
+		stats[4] += def;
 	}
 	
 }

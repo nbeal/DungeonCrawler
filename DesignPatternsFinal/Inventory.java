@@ -49,8 +49,8 @@ public class Inventory
 	{
 		ConsumableItem item = (ConsumableItem)consumables.remove(index);
 		
-		item.consumeMessage();
 		item.consume(entity);
+		item.consumeMessage();
 	}
 	
 	public int selectItem(Scanner input)
