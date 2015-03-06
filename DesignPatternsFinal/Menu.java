@@ -73,9 +73,15 @@ public class Menu
 			
 			case "help":
 				System.out.println("\nPossible Commands:");
-				System.out.println("north\nwest\nsouth\neast\nstatus\ninventory/inv/stuff\nunlock\nget/pick up/take\nexit\nhelp");
+				System.out.println("north\nwest\nsouth\neast\nstatus\ninventory/inv/stuff\nunlock\nget/pick up/take\nlevel / level up\nexit\nhelp");
 				return null;
 			
+			case "level up":
+				userInput = "level";
+				
+			case "level":
+				return userInput;
+				
 			default:
 				System.out.println("\nInvalid Command!");
                 System.out.println("Type help for a list of commands.");

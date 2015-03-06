@@ -102,7 +102,7 @@ public class Battle
 			int expGained = 0;
 			for (int i = 0; i < enemies.length; i++)
 			{
-				expGained = enemies[i].getExp();
+				expGained += enemies[i].getExp();
 			}
 			System.out.println("You gained " + expGained + " experience");
 			for (int i = 0; i < heroes.length; i++)

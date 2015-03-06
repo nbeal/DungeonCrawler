@@ -323,13 +323,19 @@ public abstract class DungeonCharacter
 	public void spendPoint()
 	{
 		boolean spendPoints = true;
+		if (this.points == 0)
+		{
+			System.out.println(this.name + " has no points to spend");
+		}
 		while (this.points > 0 && spendPoints)
 		{
+			System.out.println();
 			int choice = 0;
 			stats();
 			System.out.println(this.name + " has " + this.points + " to spend");
 			System.out.println("Which would you like to increase?");
 			System.out.println("1) Health (20 point increase) \n2) Stength (1 point increase) \n3) Dexterity (1 point increase) \n4) Defense (1 point increase) \n5) Cancel");
+			System.out.printf(">");
 			Scanner kb = new Scanner(System.in);
 			choice = kb.nextInt();
 						
@@ -340,18 +346,22 @@ public abstract class DungeonCharacter
 					this.MaxHealth += 20;
 					this.hitPoints += 20;
 					System.out.println("Health increased by 20");
+					this.points--;
 					break;
 				case 2:
 					strength++;
 					System.out.println("Stength increased by 1");
+					this.points--;
 					break;
 				case 3:
 					dexterity++;
 					System.out.println("Dexterity increased by 1");
+					this.points--;
 					break;
 				case 4:
 					defenses = DamageHandler.addToArray(defenses, "" + DamageHandler.DAMAGE_NORMAL + "," + 1);
 					System.out.println("Defense increased by 1");
+					this.points--;
 					break;
 				default:
 					System.out.println("Nothing was increased");
@@ -368,5 +378,10 @@ public abstract class DungeonCharacter
 		System.out.println("Dexterity: " + this.dexterity);
 		System.out.println("current Stamina: " + this.stamina);
 		System.out.println("Defense: " + this.defenses[DamageHandler.DAMAGE_NORMAL]);
+	}
+
+	public int getMaxHealth()
+	{
+		return this.MaxHealth;
 	}
 }

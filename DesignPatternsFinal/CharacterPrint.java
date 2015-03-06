@@ -31,7 +31,7 @@ public class CharacterPrint
 		System.out.println(declaration + ":");
         for(int i = 0; i < heroes.length; i++)
         {
-            System.out.println(heroes[i].getName() + "\tHP: " + heroes[i].getHealth() + "\tSTAM: " + heroes[i].getStamina());
+            System.out.println(heroes[i].getName() + "  HP: " + heroes[i].getHealth() + "/" + heroes[i].getMaxHealth() + "\tSTAM: " + heroes[i].getStamina());
         }
 	}
 	
@@ -43,16 +43,16 @@ public class CharacterPrint
 		{
 			for(int i = 0; i < heroes.length; i++)
 			{
-				System.out.println(i + ") " + heroes[i].getName());
+				System.out.println((i + 1) + ") " + heroes[i].getName());
 			}
 			System.out.printf(">");
 			choice = myScanner.nextInt();
-			if (!(choice > 0 && choice < heroes.length))
+			if ((choice - 1) < 0 || (choice - 1) > heroes.length)
 			{
 				System.out.println("Please Select Again");
 			}
 		}
-		return choice;
+		return choice - 1;
 	}
 	
 	public int battleCharacterSelect(DungeonCharacter[] order, DungeonCharacter[] heroes, DungeonCharacter[] enemies, int x)

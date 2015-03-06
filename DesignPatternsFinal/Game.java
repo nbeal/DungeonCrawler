@@ -125,8 +125,10 @@ public class Game
         }
         else if(userInput.equals("level"))
         {
-        	System.out.println("Who would you like to level up?");
-        	//print out list of options
+        	//System.out.println("Who would you like to level up?");
+        	int choice = CharacterPrint.getInstance().singleCharacterSelect(heroes);
+        	heroes[choice].spendPoint();
+        	return;
         }
         else if(userInput.equals("get"))
         {
