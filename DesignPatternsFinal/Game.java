@@ -2,9 +2,11 @@ package DesignPatternsFinal;
 
 import java.util.*;
 
+import Equipment.EquipmentFactory;
 import Heroes.Hero;
 import Items.FirePotion;
 import Items.HealthPotion;
+import Items.Item;
 import Items.StaminaPotion;
 import Items.StrengthPotion;
 import Heroes.HeroFactory;
@@ -34,6 +36,7 @@ public class Game
         _scan 	 = new Scan();
         _rooms 	 = _scan.scanInRooms();
         _menu 	 = Menu.getInstance();
+        EquipmentFactory.getInstance().readFile();
         _current = new Room(); _current = _rooms[0];
         _exit 	 = false;
         _seen    = true;
@@ -204,6 +207,8 @@ public class Game
                 Battle battle = new Battle(heroes, inventory);
                 battle.printDescription();
                 _alive = battle.startBattle();
+                if(_alive)
+                	findItem();
             }
         }
 
@@ -219,7 +224,31 @@ public class Game
         }
     }
 
-    private static boolean checkLock(int direction)
+    private static void findItem() 
+    {
+		// TODO Auto-generated method stub
+    	System.out.println();
+    	Item[] droppedItems = new Item[4];
+    	int drop = 100;
+    	int number = 0;
+    	double dropped = Math.random() * 100;
+    	while (drop > dropped)
+    	{
+    		drop -= 30;
+    		dropped = Math.random() * 100;
+    		droppedItems[number] = EquipmentFactory.getInstance().loadEquipment();
+    		number++;
+    	}
+    	System.out.println("You found the following items: ");
+		for (int i = 0; i< number; i++)
+		{
+			System.out.println(droppedItems[i].getName());
+			inventory.addItem(droppedItems[i]);
+		}
+		System.out.println("");
+	}
+
+	private static boolean checkLock(int direction)
     {
         if(_current.getLocked() == direction)
         {

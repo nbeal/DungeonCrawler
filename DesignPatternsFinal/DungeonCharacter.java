@@ -159,10 +159,21 @@ public abstract class DungeonCharacter
 
 	public void modifyStamina(int stamUsed)
 	{
-		stamina -= stamUsed;
+		stamina -= (stamUsed * staminaReduction());
 
 	}
 	
+	private double staminaReduction()
+	{
+		double reduction = 1;
+		reduction *= head.getStamina();
+		reduction  *= torso.getStamina();
+		reduction *= hands.getStamina();
+		reduction *= feet.getStamina();
+		reduction *= legs.getStamina();
+		return reduction;
+	}
+
 	public int getStamina()
 	{
 		return stamina;
@@ -255,7 +266,9 @@ public abstract class DungeonCharacter
 		else
 		{
 			System.out.println("Requirements not met to equip this item");
+			return item;
 		}
+		System.out.println("You have equipped " + item.getName());
 		return old;
 			
 	}

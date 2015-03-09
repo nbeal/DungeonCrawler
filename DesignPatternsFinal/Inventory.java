@@ -55,6 +55,7 @@ public class Inventory
 	
 	public int selectItem(Scanner input)
 	{
+		System.out.printf(">");
 		int choice = input.nextInt();
 		
 		while(choice < 1 || choice > consumables.size())
@@ -68,6 +69,7 @@ public class Inventory
 	
 	private int selectEquip(Scanner input)
 	{
+		System.out.printf(">");
 		int choice = input.nextInt();
 		
 		while(choice < 1 || choice > equipments.size())
@@ -131,6 +133,7 @@ public class Inventory
 			{
 				System.out.println("Items in Inventory:");
 				printConsumables();
+				
 				int item = (selectItem(kb) - 1);
 				System.out.println("Who do you want to use it on?");
 				int hero = CharacterPrint.getInstance().singleCharacterSelect(heroes);

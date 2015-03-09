@@ -11,7 +11,7 @@ public class Armor extends Equipment
 		int health = Integer.parseInt(stats[1]);
 		int strength = Integer.parseInt(stats[2]);
 		int dextarity = Integer.parseInt(stats[3]);
-		int stamina = Integer.parseInt(stats[4]);
+		double stamina = Double.parseDouble(stats[4]);
 		String defense = ParseDefense(stats[5]);
 		String name = stats[6];
 		RedoEquipment(health, strength, dextarity, stamina, defense, name);

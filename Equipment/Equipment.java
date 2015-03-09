@@ -9,7 +9,7 @@ public class Equipment implements Item
 	private int strength;
 	private int[] attack;
 	private int dexterity;
-	private int stamina;
+	private double stamina;
 	private int defense;
 	private int[] defenses;
 	String name;
@@ -40,7 +40,7 @@ public class Equipment implements Item
 	}
 	
 	//constructor for armor type equipment
-	public void RedoEquipment(int hp, int str, int dex, int stam, String def, String tempName)
+	public void RedoEquipment(int hp, int str, int dex, double stam, String def, String tempName)
 	{
 		this.hitPoints = hp;
 		this.strength = str;
@@ -52,7 +52,7 @@ public class Equipment implements Item
 	}
 	
 	//constructor for weapon type equipment
-	public void RedoEquipment(int hp, int str, String atk , int dex, int stam, String tempName)
+	public void RedoEquipment(int hp, int str, String atk , int dex, double stam, String tempName)
 	{
 		this.hitPoints = hp;
 		this.strength = str;
@@ -105,7 +105,7 @@ public class Equipment implements Item
 		return this.name;
 	}
 
-	public int getStamina()
+	public double getStamina()
 	{
 		return this.stamina;
 	}

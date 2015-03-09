@@ -38,11 +38,11 @@ public class Battle
 		{
 			for (int x = 0; x < order.length; x++)
 			{
-				CharacterPrint.printOrder(order, x);
 				if (heroStatus && enemyStatus)
 				{
 					if (order[x].isAlive())
 					{
+						CharacterPrint.printOrder(order, x);
 						int damage = 0;
 						int item = 0;
 						//Select Action

@@ -12,7 +12,7 @@ public class Weapon extends Equipment
 		int strength = Integer.parseInt(stats[2]);
 		String attack = ParseAttack(stats[3]);
 		int dextarity = Integer.parseInt(stats[4]);
-		int stamina = Integer.parseInt(stats[5]);
+		double stamina = Double.parseDouble(stats[5]);
 		String name = stats[6];
 		RedoEquipment(health, strength, attack, dextarity, stamina, name);
 		super.type = "weapon";
