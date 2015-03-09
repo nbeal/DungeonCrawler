@@ -147,7 +147,12 @@ public class Game
             tryUnlock();
             return;
         }
-
+        else if(userInput.equals("inventory"))
+        {
+        	inventory.useItems(heroes);
+        	return;
+        }
+        
         moveRoom(_current.getDirection(userInput), userInput);
     }
 

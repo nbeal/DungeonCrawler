@@ -66,17 +66,35 @@ public class Inventory
 		return choice;
 	}
 	
+	private int selectEquip(Scanner input)
+	{
+		int choice = input.nextInt();
+		
+		while(choice < 1 || choice > equipments.size())
+		{
+			System.out.println("Invalid, pick again");
+			choice = input.nextInt();
+		}
+		
+		return choice;
+	}
+	
 	public boolean haveConsumables()
 	{
-		if(consumables.size() > 0)
-			return true;
+		return(consumables.size() > 0);
+	//		return true;
 		
-		return false;
+	//	return false;
+	}
+	
+	public boolean haveEquipment()
+	{
+		return(equipments.size() > 0);
 	}
 	
 	public void printConsumables()
 	{	
-		if(consumables.size() > 0)
+		if(haveConsumables())
 		{
 			for(int k = 0; k < consumables.size(); k++)
 			{
@@ -90,10 +108,48 @@ public class Inventory
 	
 	public void printEquipment()
 	{	
-		for(int k = 0; k < equipments.size(); k++)
+		if (haveEquipment())
 		{
-			System.out.println(k+1 + ") " + equipments.get(k).getName());
+			for(int k = 0; k < equipments.size(); k++)
+			{
+				System.out.println(k+1 + ") " + equipments.get(k).getName());
+			}
+		}
+		else
+			System.out.println("No Equipment!");
+	}
+	
+	public void useItems(DungeonCharacter[] heroes)
+	{
+		int choice = -1;
+		Scanner kb = new Scanner(System.in);
+		while (choice != 0)
+		{
+			System.out.println("Would you like to use an item or equip something?\n1)Item\n2)Equip\n0)Exit");
+			System.out.printf(">");
+			choice = kb.nextInt();
+			if (choice == 0)
+				return;
+			if (choice == 1 && haveConsumables())
+			{
+				System.out.println("Items in Inventory:");
+				printConsumables();
+				int item = (selectItem(kb) - 1);
+				System.out.println("Who do you want to use it on?");
+				int hero = CharacterPrint.getInstance().singleCharacterSelect(heroes);
+				consume(item,heroes[hero]);
+			}
+			else if(choice == 2 && haveEquipment())
+			{
+				System.out.println("Equipment in Inventory:");
+				printEquipment();
+				int item = (selectEquip(kb) - 1);
+				System.out.println("Who do you want to equip it to?");
+				int hero = CharacterPrint.getInstance().singleCharacterSelect(heroes);
+				equipPartyMember((Hero) heroes[hero],item);
+			}
 		}
 	}
+
 	
 }
