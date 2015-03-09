@@ -82,9 +82,6 @@ public class Inventory
 	public boolean haveConsumables()
 	{
 		return(consumables.size() > 0);
-	//		return true;
-		
-	//	return false;
 	}
 	
 	public boolean haveEquipment()

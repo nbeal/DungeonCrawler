@@ -21,6 +21,7 @@ public class Game
     private static Room 	_current;
     private static boolean 	_exit;
     private static boolean  _seen;
+    private static boolean	_alive;
     private static Scan 	_scan;
     private static String   _previous;
     private static Inventory inventory = Inventory.getInventory();
@@ -36,6 +37,7 @@ public class Game
         _current = new Room(); _current = _rooms[0];
         _exit 	 = false;
         _seen    = true;
+        _alive	 = true;
         _keys	 = 0;
         _previous= "south";
 
@@ -54,7 +56,7 @@ public class Game
         selectHeroes(scanner);
         System.out.println();
 
-        while(!_exit)
+        while(!_exit && _alive)
         {
             if(_seen)
             {
@@ -201,7 +203,7 @@ public class Game
             {
                 Battle battle = new Battle(heroes, inventory);
                 battle.printDescription();
-                battle.startBattle();
+                _alive = battle.startBattle();
             }
         }
 

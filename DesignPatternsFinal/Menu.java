@@ -41,7 +41,6 @@ public class Menu
 
             case "unlock door":
                 userInput = "unlock";
-                return userInput;
 
             case "unlock":
                 return userInput;
@@ -51,23 +50,23 @@ public class Menu
 
 			case "take":
 			    userInput = "get";
-			    return userInput;
 			
 			case "get":
 			    return userInput;
 
+            case "inv":		//drop down to modification	    
+			case "stuff":
+                userInput = "inventory";                
             case "inventory":
                 return userInput;
 
-            case "inv":
-                userInput = "inventory";
-                return userInput;
-
-            case "stuff":
-                userInput = "inventory";
-                return userInput;
-
-			case "exit":
+			case "level up":
+				userInput = "level";
+				
+			case "level":
+				return userInput;
+			    
+            case "exit":
 				System.out.println("\nExiting...");
 				return userInput;
 			
@@ -75,12 +74,6 @@ public class Menu
 				System.out.println("\nPossible Commands:");
 				System.out.println("north\nwest\nsouth\neast\nstatus\ninventory/inv/stuff\nunlock\nget/pick up/take\nlevel / level up\nexit\nhelp");
 				return null;
-			
-			case "level up":
-				userInput = "level";
-				
-			case "level":
-				return userInput;
 				
 			default:
 				System.out.println("\nInvalid Command!");

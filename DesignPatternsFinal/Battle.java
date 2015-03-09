@@ -28,7 +28,7 @@ public class Battle
 
 	}
 	
-	public void startBattle()
+	public boolean startBattle()
 	{
 		
 		DungeonCharacter[] order = concat(heroes, enemies);
@@ -110,10 +110,12 @@ public class Battle
 				if (heroes[i].isAlive())
 					heroes[i].gainExperience(expGained);
 			}
+			return true;
 		}
 		else
 		{
 			System.out.println("--GAME OVER--");
+			return false;
 		}
 	}
 
