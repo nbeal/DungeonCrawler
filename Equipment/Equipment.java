@@ -21,7 +21,7 @@ public class Equipment implements Item
 		this.strength = 0;
 		this.attack = DamageHandler.fillArray("");
 		this.dexterity = 0;
-		this.stamina = 0;
+		this.stamina = 1;
 		this.defense = 0;
 		this.defenses = DamageHandler.fillArray("");
 		this.name = "Nothing";
@@ -105,4 +105,8 @@ public class Equipment implements Item
 		return this.name;
 	}
 
+	public int getStamina()
+	{
+		return this.stamina;
+	}
 }
