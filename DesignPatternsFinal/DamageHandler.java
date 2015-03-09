@@ -103,4 +103,20 @@ public class DamageHandler
 		}
 		return Array;
 	}
+
+	public static int getValue(String encoded)
+	{
+		switch (encoded)
+		{
+			case "DAMAGE_NORMAL":	return DAMAGE_NORMAL;
+			case "DAMAGE_PIERCE":	return DAMAGE_PIERCE;
+			case "DAMAGE_FIRE":		return DAMAGE_FIRE;
+			case "DAMAGE_WATER":	return DAMAGE_WATER;
+			case "DAMAGE_ELEC":		return DAMAGE_ELEC;
+			case "DAMAGE_HEAL":		return DAMAGE_HEAL;
+			case "DAMAGE_COLD":		return DAMAGE_COLD;
+		}
+		return Integer.parseInt(encoded);
+		
+	}
 }

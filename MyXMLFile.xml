@@ -8,17 +8,31 @@
 		<!-- Weapon example: WEAPON~Health~Stength~Attack(1,5,2,6)~Dextarity~Stamina~Name -->
 		<!-- Defense/Attack unlimited number of values. odd values must be between 0 and 4(subject to change) -->
 		<!-- Armor types: head; torso; hands; feet; legs; -->
-		<value1>ARMOR~5~3~5~1~0,5,2,6~helm of testing~head</value1>
-		<value2>ARMOR~999~8~9~20~0,90,2,1~Chest plate of annoying~torso</value2>
-		<value3>ARMOR~0~0~50~10~0,0~shoes of swiftness~feet</value3>
-		<value4>WEAPON~1~4~0,5,2,6~4~2~You have my sword</value4>
-		<value5>WEAPON~1~3~1,20~5~15~and my bow</value5>
-		<value6>WEAPON~0~19~0,14~1~10~AND MY AXE</value6>
-		<value7>Tom2</value7>
-		<value8>Cruise2</value8>
-		<value9>evil2</value9>
-		<value10>testing2</value10>
-		<value11>equipers2</value11>
-		<value12>sword2</value12>
+		<value1>ARMOR~0~0~0~1~DEFENSE_NORM,1,DAMAGE_COLD,-4,DAMAGE_FIRE,2~Leather Helm~head</value1>
+		<value2>ARMOR~0~0~0~1~DEFENSE_NORM,1,DAMAGE_COLD,-4,DAMAGE_FIRE,2~Leather Chest~torso</value2>
+		<value3>ARMOR~0~0~0~1~DEFENSE_NORM,1,DAMAGE_COLD,-4,DAMAGE_FIRE,2~Leather Vanbraces~hands</value3>
+		<value4>ARMOR~0~0~0~1~DEFENSE_NORM,1,DAMAGE_COLD,-4,DAMAGE_FIRE,2~Leather Pants~legs</value4>
+		<value5>ARMOR~0~0~0~1~DEFENSE_NORM,1,DAMAGE_COLD,-4,DAMAGE_FIRE,2~Leather Boots~feet</value5>
+		<value6>ARMOR~0~3~2~1~DEFENSE_NORM,2,DAMAGE_COLD,2,DAMAGE_FIRE,-3~Iron Helm~head</value6>
+		<value7>ARMOR~0~3~2~1~DEFENSE_NORM,2,DAMAGE_COLD,2,DAMAGE_FIRE,-3~Iron Chest Plate~torso</value7>
+		<value8>ARMOR~0~3~2~1~DEFENSE_NORM,2,DAMAGE_COLD,2,DAMAGE_FIRE,-3~Iron Vanbraces~hands</value8>
+		<value9>ARMOR~0~3~2~1~DEFENSE_NORM,2,DAMAGE_COLD,2,DAMAGE_FIRE,-3~Iron Pants~legs</value9>
+		<value10>ARMOR~0~3~2~1~DEFENSE_NORM,2,DAMAGE_COLD,2,DAMAGE_FIRE,-3~Iron Boots~feet</value10>
+		<value11>ARMOR~0~6~3~1~DEFENSE_NORM,6,DAMAGE_COLD,4~Steel Helm~head</value11>
+		<value12>ARMOR~0~6~3~1~DEFENSE_NORM,6,DAMAGE_COLD,4~Steel Chest Plate~torso</value12>
+		<value13>ARMOR~0~6~3~1~DEFENSE_NORM,6,DAMAGE_COLD,4~Steel Vanbraces~hands</value13>
+		<value14>ARMOR~0~6~3~1~DEFENSE_NORM,6,DAMAGE_COLD,4~Steel Pants~legs</value14>
+		<value15>ARMOR~0~6~3~1~DEFENSE_NORM,6,DAMAGE_COLD,4~Steel Boots~feet</value15>
+		<value16>WEAPON~0~2~DEFENSE_NORM,2~0~1~Wooden Sword</value16>
+		<value17>WEAPON~0~1~DEFENSE_NORM,2~0~.9~Wooden Staff</value17>
+		<value18>WEAPON~0~2~DEFENSE_NORM,3~6~1~Iron Dagger</value18>
+		<value19>WEAPON~0~4~DEFENSE_NORM,5~0~1~Wooden Club</value19>
+		<value20>WEAPON~0~3~DEFENSE_NORM,2~2~1~Small Bow</value20>
+		<value21>WEAPON~0~5~DEFENSE_NORM,5~0~1~Iron Sword</value21>
+		<value22>WEAPON~0~3~DEFENSE_NORM,-2~2~.5~Oak Staff</value22>
+		<value23>WEAPON~0~2~DEFENSE_PIERCE,8~12~1~Iron Dagger</value23>
+		<value24>WEAPON~0~10~DEFENSE_NORM,9~4~1~GiantHammer</value24>
+		<value25>WEAPON~0~4~DEFENSE_NORM,4~5~1~Recurve Bow</value25>
+		<value26>ARMOR~0~0~13~.5~DEFENSE_NORM,-2,DEFENSE_FIRE,-2,DEFENSE_COLD,-2~Shoes of stamina reduction~feet</value26>	
 	</equipment>
 </items>
