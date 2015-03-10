@@ -48,6 +48,9 @@ public class Menu
             case "status":
                 return userInput;
 
+            case "equipstatus":
+            	return userInput;
+            		
 			case "take":
 			    userInput = "get";
 			
@@ -72,7 +75,7 @@ public class Menu
 			
 			case "help":
 				System.out.println("\nPossible Commands:");
-				System.out.println("north\nwest\nsouth\neast\nstatus\ninventory/inv/stuff\nunlock\nget/pick up/take\nlevel / level up\nexit\nhelp");
+				System.out.println("north\nwest\nsouth\neast\nstatus\ninventory/inv/stuff\nunlock\nget/pick up/take\nlevel / level up\nEquipStatus\nexit\nhelp");
 				return null;
 				
 			default:

@@ -9,7 +9,6 @@ import Items.HealthPotion;
 import Items.Item;
 import Items.ItemFactory;
 import Items.StaminaPotion;
-import Items.StrengthPotion;
 import Heroes.HeroFactory;
 
 //Main Game Starter
@@ -129,6 +128,16 @@ public class Game
             System.out.println("\nYou have " + _keys + " key(s).");
             CharacterPrint.getInstance().StatusPrint(heroes, "Party");
             return;
+        }
+        else if(userInput.equals("equipstatus"))
+        {
+        	for (DungeonCharacter hero: heroes)
+        	{
+        		System.out.println(hero.getName());
+        		hero.printEquipment();
+        		System.out.println();
+        	}
+        	return;
         }
         else if(userInput.equals("level"))
         {

@@ -17,7 +17,12 @@ public class NameFactory
 		names.add("Zeldor");
 		names.add("Tyr");
 		names.add("Bartimaeus");
-		
+		names.add("Ted");
+		names.add("Link");
+		names.add("Iselidor");
+		names.add("Tiny");
+		names.add("Artemis");
+		names.add("Leonidus");
 		
 	};
 	

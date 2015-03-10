@@ -330,7 +330,7 @@ public abstract class DungeonCharacter
 	public void gainExperience(int exp)
 	{
 		this.experience += exp;
-		if (this.experience >= this.nextLevel)
+		while (this.experience >= this.nextLevel)
 		{
 			this.currentLevel++;
 			System.out.println(this.name + " has gained a level, they are now level " + this.currentLevel);
@@ -403,5 +403,15 @@ public abstract class DungeonCharacter
 	public int getMaxHealth()
 	{
 		return this.MaxHealth;
+	}
+	
+	public void printEquipment()
+	{
+		System.out.println("Head: " + head.getName());
+		System.out.println("Torso: " + torso.getName());
+		System.out.println("hands: " + hands.getName());
+		System.out.println("legs: " + legs.getName());
+		System.out.println("feet: " + feet.getName());
+		System.out.println("Weapon: " + weapon.getName());
 	}
 }
