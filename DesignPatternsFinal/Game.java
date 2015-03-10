@@ -260,6 +260,7 @@ public class Game
 
     private static void tryUnlock()
     {
+    	StatsFactory statFact = StatsFactory.getStatFact();
         if(_keys == 0) {
             System.out.println("\nYou need a key to do this action!");
             return;
@@ -267,6 +268,7 @@ public class Game
         if(_current.getID().equals("11") && _current.getLocked() != 0)
         {
             System.out.println("\nYou unlock the door...");
+            statFact.levelUpAll(10, 5, 5, 10, 5);
             _current.setLocked("0");
             return;
         }
@@ -279,6 +281,7 @@ public class Game
         if(_current.getID().equals("23") && _current.getLocked() != 0 && _keys > 1)
         {
             System.out.println("\nYou unlock the multiple locks on the door...");
+            statFact.levelUpAll(10, 5, 5, 10, 5);
             _current.setLocked("0");
             return;
         }
