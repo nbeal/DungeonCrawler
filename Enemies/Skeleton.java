@@ -2,6 +2,7 @@ package Enemies;
 
 import Attack.Rattle;
 import Attack.AttackType;
+import Attack.Shoot;
 import Attack.Slash;
 import Attack.SpecialAttack;
 import DesignPatternsFinal.Stats;
@@ -17,7 +18,7 @@ public class Skeleton extends Enemy
 	{
 		super("Skeleton", stats);
 
-		attacktype = new Slash();
+		attacktype = new Shoot();
 		special = new Rattle();
 		this.setExp(10);
 	}

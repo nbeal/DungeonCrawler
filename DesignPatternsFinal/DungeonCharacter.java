@@ -19,7 +19,7 @@ public abstract class DungeonCharacter
 	private int dexterity;
 	private int stamina;
 	private int[] defenses;
-	private String name;
+	private String name = "";
 	private String title;
 	
 	protected AttackType attacktype;
@@ -72,7 +72,7 @@ public abstract class DungeonCharacter
 		def = def + "," + stats[4];
 		defenses = DamageHandler.fillArray(def);
 		
-		this.name =enName;
+		this.title = enName;
 		
 		this.experience = 0;
 		this.nextLevel = 20;
@@ -98,6 +98,11 @@ public abstract class DungeonCharacter
 		this.nextLevel = 20;
 		this.currentLevel = 1;
 		this.points = 0;
+	}
+	
+	public void setName(String n)
+	{
+		name = n;
 	}
 	
 	public int attack(DungeonCharacter defender)
@@ -293,7 +298,9 @@ public abstract class DungeonCharacter
 	
 	public String getName()
 	{
-		return name;
+		if(name.equals(""))
+			return title;
+		return name + " The " + title;
 	}
 	
 	public int getDex()

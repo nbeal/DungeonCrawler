@@ -9,23 +9,27 @@ public class HeroFactory implements CharacterFactory
 {
 	public DungeonCharacter order(String name)
 	{
+		DungeonCharacter character = null;
+		NameFactory nameFact = NameFactory.getNameFact();
 		
 		if(name.equals("Wizard"))
-			return new Wizard(new Stats("Wizard"));
+			character = new Wizard(new Stats("Wizard"));
 		else
 		if(name.equals("Paladin"))
-			return new Paladin(new Stats("Paladin"));
+			character = new Paladin(new Stats("Paladin"));
 		else
 		if(name.equals("Cleric"))
-			return new Cleric(new Stats("Cleric"));
+			character = new Cleric(new Stats("Cleric"));
 		else
 		if(name.equals("Ranger"))
-			return new Ranger(new Stats("Ranger"));
+			character = new Ranger(new Stats("Ranger"));
 		else
 		if(name.equals("Barbarian"))
-			return new Barbarian(new Stats("Barbarian"));
+			character = new Barbarian(new Stats("Barbarian"));
 		
-		return null;
+		character.setName(nameFact.getName());
+		
+		return character;
 	}
 	
 
