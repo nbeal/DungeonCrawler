@@ -12,7 +12,7 @@ import org.w3c.dom.NodeList;
 
 public class EquipmentFactory
 {
-	private static final int totalEquipment = 6;
+	private static final int totalEquipment = 26;
 	private static EquipmentFactory instance = null;
 	private static String fileName = "MyXMLFile.xml";
 	private static Document equipmentFile;

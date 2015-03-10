@@ -7,6 +7,7 @@ import Heroes.Hero;
 import Items.FirePotion;
 import Items.HealthPotion;
 import Items.Item;
+import Items.ItemFactory;
 import Items.StaminaPotion;
 import Items.StrengthPotion;
 import Heroes.HeroFactory;
@@ -37,6 +38,7 @@ public class Game
         _rooms 	 = _scan.scanInRooms();
         _menu 	 = Menu.getInstance();
         EquipmentFactory.getInstance().readFile();
+        ItemFactory.getInstance().readFile();
         _current = new Room(); _current = _rooms[0];
         _exit 	 = false;
         _seen    = true;
@@ -236,7 +238,8 @@ public class Game
     	{
     		drop -= 30;
     		dropped = Math.random() * 100;
-    		droppedItems[number] = EquipmentFactory.getInstance().loadEquipment();
+    		//droppedItems[number] = EquipmentFactory.getInstance().loadEquipment();
+    		droppedItems[number] = ItemFactory.getInstance().loadItem();
     		number++;
     	}
     	System.out.println("You found the following items: ");
