@@ -31,11 +31,12 @@ public class Battle
 	public boolean startBattle()
 	{
 		
-		DungeonCharacter[] order = concat(heroes, enemies);
+		DungeonCharacter[] order;
 		boolean heroStatus = checkStatus(heroes);
 		boolean enemyStatus = checkStatus(enemies);
 		while(heroStatus && enemyStatus)
 		{
+			order = concat(heroes, enemies);
 			for (int x = 0; x < order.length; x++)
 			{
 				if (heroStatus && enemyStatus)
@@ -216,15 +217,19 @@ public class Battle
 	{
 		
 		DungeonCharacter[] temp = new DungeonCharacter[heroes.length + enemies.length];
-		int x;
-		for (x = 0; x < heroes.length; x++)
+		int x = 0;
+		for (int i = 0; i < heroes.length; i++)
 		{
-			temp[x] = heroes[x];
+			temp[x] = heroes[i];
+			x++;
 		}
 		for (int i = 0; i < enemies.length; i++)
 		{
-			temp[x] = enemies[i];
-			x++;
+			if (enemies[i].isAlive())
+			{
+				temp[x] = enemies[i];
+				x++;
+			}
 		}
 		
 		int[] intiative = new int[temp.length];
