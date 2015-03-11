@@ -69,7 +69,6 @@ public class ItemFactory
 		Item loaded = null;
 		if (valid)
 		{
-			
 			try
 			{
 				int itemChoice = 1 + (int) (Math.random() * (totalItems - 1));
