@@ -128,7 +128,7 @@ public class CharacterPrint
 	public static void printOrder(DungeonCharacter[] order, int x)
 	{
 		System.out.println();
-		System.out.println("Order");
+		System.out.println("Initiative Order");
 		if (order[x].isAlive())
 		{
 			for (int i = 0; i < order.length; i++)
