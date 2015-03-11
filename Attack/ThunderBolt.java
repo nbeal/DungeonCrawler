@@ -8,6 +8,7 @@ public class ThunderBolt extends SpecialAttack
 	{
 		stamUsed = 10;
 		name = "Thunder Bolt";
+		action = "shoots a bolt of lightning at";
 		damage = 10; 
 		damageType = DamageHandler.DAMAGE_ELEC;
 	}

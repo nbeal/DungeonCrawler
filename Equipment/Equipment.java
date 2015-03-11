@@ -1,5 +1,6 @@
 package Equipment;
 
+import Attack.AttackType;
 import DesignPatternsFinal.DamageHandler;
 import Items.Item;
 
@@ -14,6 +15,7 @@ public class Equipment implements Item
 	private int[] defenses;
 	String name;
 	String type;
+	protected AttackType Attack;
 	
 	public Equipment()
 	{
@@ -108,5 +110,10 @@ public class Equipment implements Item
 	public double getStamina()
 	{
 		return this.stamina;
+	}
+	
+	public AttackType getAttackType()
+	{
+		return this.Attack;
 	}
 }

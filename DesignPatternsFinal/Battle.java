@@ -85,10 +85,12 @@ public class Battle
 						if(action == 1)
 						{
 							damage = order[x].attack(order[target]);
+							System.out.println(order[x].getName() + " " + order[x].attacktype.getAction() + " " + order[target].getName() + " for " + damage + " damage!" );
 						}
 						else if(action == 2)
 						{
 							damage =  order[x].special(order[target]);
+							System.out.println(order[x].getName() + " " + order[x].special.getAction() + " " + order[target].getName() + " for " + damage + " damage!" );
 						}
 						else if(action == 3)
 						{
@@ -97,11 +99,9 @@ public class Battle
 							inventory.consume(item - 1, order[target]);
 							
 						}
-							if(action != 3)
-								System.out.println(order[x].getName() + " hit " + order[target].getName() + " for " + damage + " damage!" );
 							//check status for each group;
-							heroStatus = checkStatus(heroes);
-							enemyStatus = checkStatus(enemies);
+						heroStatus = checkStatus(heroes);
+						enemyStatus = checkStatus(enemies);
 
 					}
 				}			

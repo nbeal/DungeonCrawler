@@ -256,7 +256,7 @@ public abstract class DungeonCharacter
 	public Equipment equip(Equipment item)
 	{
 		String type = item.getType();
-		Equipment old = null;
+		Equipment old = item;
 		if (requirementsMet(item))
 		{
 			if(type.equals("head"))
@@ -288,6 +288,7 @@ public abstract class DungeonCharacter
 			{
 				old = weapon;
 				weapon = item;
+				this.attacktype = item.getAttackType();
 			}
 		}
 		else

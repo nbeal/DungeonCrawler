@@ -143,10 +143,11 @@ public class Inventory
 	{
 		int choice = -1;
 		Scanner kb = new Scanner(System.in);
-        System.out.println("Would you like to use an item or equip something?\n1)Item\n2)Equip\n0)Exit");
+        
 		while (choice != 0)
 		{
             try {
+            	System.out.println("Would you like to use an item or equip something?\n1)Item\n2)Equip\n0)Exit");
                 System.out.printf(">");
                 choice = kb.nextInt();
                 if (choice == 0)

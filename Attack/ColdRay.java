@@ -8,6 +8,7 @@ public class ColdRay extends SpecialAttack
 	{
 		stamUsed = 10;
 		name = "Ray of Cold";
+		action = "fires a freezing ray at";
 		damage = 15; 
 		damageType = DamageHandler.DAMAGE_COLD;
 	}

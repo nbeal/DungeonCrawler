@@ -1,9 +1,12 @@
 package Equipment;
 
+import Attack.AttackType;
 import DesignPatternsFinal.DamageHandler;
+import Items.Item;
 
 public class Weapon extends Equipment
 {
+
 	public Weapon (String[] stats)
 	{
 		super();
@@ -16,6 +19,25 @@ public class Weapon extends Equipment
 		String name = stats[6];
 		RedoEquipment(health, strength, attack, dextarity, stamina, name);
 		super.type = "weapon";
+		attackResolve(stats[7]);
+	}
+
+	private void attackResolve(String attack)
+	{
+		try
+		{
+			String attackName = "Attack." + attack;
+        	Class c = Class.forName(attackName);
+
+        	Object o = c.newInstance();
+
+        	this.Attack = (AttackType) o;
+		}
+		catch(Exception e)
+		{
+			 e.printStackTrace();
+		}
+		
 	}
 
 	private String ParseAttack(String string)

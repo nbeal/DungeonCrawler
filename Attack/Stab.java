@@ -1,14 +1,15 @@
 package Attack;
 
+
 import DesignPatternsFinal.DamageHandler;
 
-public class Slash extends AttackType
+public class Stab extends AttackType
 {
-	public Slash()
+	public Stab()
 	{
-		name = "Slash";
-		action = "slashes";
-		damage = 6;
+		name = "Stab";
+		action = "stabs";
+		damage = 5;
 		damageType = DamageHandler.DAMAGE_NORMAL;
 	}
 }

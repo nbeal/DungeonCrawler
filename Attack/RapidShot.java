@@ -8,6 +8,7 @@ public class RapidShot extends SpecialAttack
 	{
 		stamUsed = 10;
 		name = "Rapid Shot";
+		action = "rapidly fires a flurry of arrows at";
 		damage = 12; 
 		damageType = DamageHandler.DAMAGE_PIERCE;
 	}

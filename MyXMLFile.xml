@@ -2,7 +2,7 @@
 <items>
 	<equipment>
 		<!-- Armor example: ARMOR~Health~Stength~Dextarity~Stamina~Defense(1,5,2,6)~Name~type -->
-		<!-- Weapon example: WEAPON~Health~Stength~Attack(1,5,2,6)~Dextarity~Stamina~Name -->
+		<!-- Weapon example: WEAPON~Health~Stength~Attack(1,5,2,6)~Dextarity~Stamina~Name~AttackType -->
 		<!-- Defense/Attack unlimited number of values. odd values must be between 0 and 4(subject to change) -->
 		<!-- Armor types: head; torso; hands; feet; legs; -->
 		<value1>ARMOR~0~0~0~1~DAMAGE_NORMAL,1,DAMAGE_COLD,-4,DAMAGE_FIRE,2~Leather Helm~head</value1>
@@ -20,21 +20,16 @@
 		<value13>ARMOR~0~6~3~1~DAMAGE_NORMAL,6,DAMAGE_COLD,4~Steel Vanbraces~hands</value13>
 		<value14>ARMOR~0~6~3~1~DAMAGE_NORMAL,6,DAMAGE_COLD,4~Steel Pants~legs</value14>
 		<value15>ARMOR~0~6~3~1~DAMAGE_NORMAL,6,DAMAGE_COLD,4~Steel Boots~feet</value15>
-		<value16>WEAPON~0~2~DAMAGE_NORMAL,2~0~1~Wooden Sword</value16>
-		<value17>WEAPON~0~1~DAMAGE_NORMAL,2~0~.9~Wooden Staff</value17>
-		<value18>WEAPON~0~2~DAMAGE_NORMAL,3~6~1~Iron Dagger</value18>
-		<value19>WEAPON~0~4~DAMAGE_NORMAL,5~0~1~Wooden Club</value19>
-		<value20>WEAPON~0~3~DAMAGE_NORMAL,2~2~1~Small Bow</value20>
-		<value21>WEAPON~0~5~DAMAGE_NORMAL,5~0~1~Iron Sword</value21>
-		<value22>WEAPON~0~3~DAMAGE_NORMAL,-2~2~.5~Oak Staff</value22>
-		<value23>WEAPON~0~2~DAMAGE_PIERCE,8~12~1~Iron Dagger</value23>
-		<value24>WEAPON~0~10~DAMAGE_NORMAL,9~4~1~GiantHammer</value24>
-		<value25>WEAPON~0~4~DAMAGE_NORMAL,4~5~1~Recurve Bow</value25>
-        <value26>WEAPON~0~3~DAMAGE_PIERCE,5~5~.5~Rapier</value26>
-        <value27>WEAPON~0~6~DAMAGE_NORMAL,8~3~1~Katana</value27>
-        <value28>WEAPON~0~10~DAMAGE_NORMAL,10~4~1~War Axe</value28>
-		<value29>ARMOR~0~0~13~.5~DAMAGE_NORMAL,-2,DAMAGE_FIRE,-2,DAMAGE_COLD,-2~Shoes of Stamina Reduction~feet</value29>
-        <value12>ARMOR~0~1~0~1~DAMAGE_NORMAL,6,DAMAGE_COLD,4~Mithral Chainmaille~torso</value12>
-        <value12>ARMOR~20~0~0~1~DAMAGE_NORMAL,0,DAMAGE_COLD,0~Helm of Health~head</value12>
+		<value16>WEAPON~0~2~DAMAGE_NORMAL,2~0~1~Wooden Sword~Slash</value16>
+		<value17>WEAPON~0~1~DAMAGE_NORMAL,2~0~.9~Wooden Staff~Wack</value17>
+		<value18>WEAPON~0~2~DAMAGE_NORMAL,3~6~1~Iron Dagger~Stab</value18>
+		<value19>WEAPON~0~4~DAMAGE_NORMAL,5~0~1~Wooden Club~Smash</value19>
+		<value20>WEAPON~0~3~DAMAGE_NORMAL,2~2~1~Small Bow~Shoot</value20>
+		<value21>WEAPON~0~5~DAMAGE_NORMAL,5~0~1~Iron Sword~Slash</value21>
+		<value22>WEAPON~0~3~DAMAGE_NORMAL,-2~2~.5~Oak Staff~Wack</value22>
+		<value23>WEAPON~0~2~DAMAGE_PIERCE,8~12~1~Iron Dagger~Stab</value23>
+		<value24>WEAPON~0~10~DAMAGE_NORMAL,9~4~1~GiantHammer~Smash</value24>
+		<value25>WEAPON~0~4~DAMAGE_NORMAL,4~5~1~Recurve Bow~Shoot</value25>
+		<value26>ARMOR~0~0~13~.5~DAMAGE_NORMAL,-2,DAMAGE_FIRE,-2,DAMAGE_COLD,-2~Shoes of stamina reduction~feet</value26>	
 	</equipment>
 </items>

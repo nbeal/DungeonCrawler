@@ -3,6 +3,7 @@ package Attack;
 public abstract class AttackType
 {
 	String name;
+	String action;
 	int damageType;
 	int damage;
 	public String attack()
@@ -13,6 +14,11 @@ public abstract class AttackType
 	public String getAttackName()
 	{
 		return name;
+	}
+	
+	public String getAction()
+	{
+		return action;
 	}
 	private String getDamage()
 	{

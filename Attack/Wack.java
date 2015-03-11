@@ -1,14 +1,16 @@
 package Attack;
 
+
 import DesignPatternsFinal.DamageHandler;
 
-public class Slash extends AttackType
+public class Wack extends AttackType
 {
-	public Slash()
+	public Wack()
 	{
-		name = "Slash";
-		action = "slashes";
-		damage = 6;
+		name = "Wack";
+		action = "hits";
+		damage = 3;
 		damageType = DamageHandler.DAMAGE_NORMAL;
 	}
 }
+

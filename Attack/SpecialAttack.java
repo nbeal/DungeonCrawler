@@ -4,6 +4,7 @@ public abstract class SpecialAttack
 {
 	int stamUsed;
 	String name;
+	String action;
 	int damageType;
 	int damage;
 	public String attack()
@@ -24,6 +25,11 @@ public abstract class SpecialAttack
 	public int getStamUsed()
 	{
 		return damage;
+	}
+
+	public String getAction()
+	{
+		return action;
 	}
 
 }

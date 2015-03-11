@@ -9,6 +9,7 @@ public class NullSpecialAttack extends SpecialAttack
 	{
 		stamUsed = 0;
 		name = "NA";
+		action = "kinda just looked at";
 		damage = 0;
 		damageType = DamageHandler.DAMAGE_NORMAL;
 	}
