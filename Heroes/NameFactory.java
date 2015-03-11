@@ -23,6 +23,22 @@ public class NameFactory
 		names.add("Tiny");
 		names.add("Artemis");
 		names.add("Leonidus");
+        names.add("Rand");
+        names.add("Zedd");
+        names.add("Alistair");
+        names.add("Morrigan");
+        names.add("Sera");
+        names.add("Carth");
+        names.add("Kahlan");
+        names.add("Link");
+        names.add("Bartimaeus");
+        names.add("Rahl");
+        names.add("Eowen");
+        names.add("Daknar");
+        names.add("Dyana");
+        names.add("Warren");
+        names.add("Rorik");
+		
 		
 	};
 	

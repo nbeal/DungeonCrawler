@@ -20,7 +20,7 @@ public class ItemFactory
 {
 	private static final int totalItems = 10;
 	private static ItemFactory instance = null;
-	private static String fileName = "ItemList.xml";
+	private static String fileName = "C:\\Users\\Sapphire\\Documents\\DesignPatternsFinal\\Final\\src\\ItemList.xml";
 	private static Document ItemFile;
 	private static boolean valid = false;
 	
@@ -59,7 +59,8 @@ public class ItemFactory
 		}
 	    catch (Exception e) 
 			{
-		        e.printStackTrace();
+                System.out.println("Cannot find Item XML!");
+                System.exit(-1);
 		    }
 	}
 		

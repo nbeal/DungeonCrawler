@@ -1,6 +1,7 @@
 package DesignPatternsFinal;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Equipment.Equipment;
@@ -55,30 +56,52 @@ public class Inventory
 	
 	public int selectItem(Scanner input)
 	{
-		System.out.printf(">");
-		int choice = input.nextInt();
-		
-		while(choice < 1 || choice > consumables.size())
-		{
-			System.out.println("Invalid, pick again");
-			choice = input.nextInt();
-		}
-		
-		return choice;
+		int choice = -1;
+
+        while(choice < 1 || choice > consumables.size())
+        {
+            try {
+                System.out.printf(">");
+                choice = input.nextInt();
+                if(choice == 0)
+                    return 0;
+                if(choice < 1 || choice > consumables.size()) {
+                    System.out.printf("\nInvalid choice! Please try again\n");
+                    input.nextLine();
+                }
+            }catch(InputMismatchException e)
+            {
+                input.nextLine();
+                System.out.printf("\nInvalid choice! Please try again\n");
+            }
+        }
+        input.nextLine();
+        return choice;
 	}
 	
 	private int selectEquip(Scanner input)
 	{
-		System.out.printf(">");
-		int choice = input.nextInt();
-		
-		while(choice < 1 || choice > equipments.size())
-		{
-			System.out.println("Invalid, pick again");
-			choice = input.nextInt();
-		}
-		
-		return choice;
+        int choice = -1;
+
+        while(choice < 1 || choice > equipments.size())
+        {
+            try {
+                System.out.printf(">");
+                choice = input.nextInt();
+                if(choice == 0)
+                    return 0;
+                if(choice < 1 || choice > equipments.size()) {
+                    System.out.printf("\nInvalid choice! Please try again\n");
+                    input.nextLine();
+                }
+            }catch(InputMismatchException e)
+            {
+                input.nextLine();
+                System.out.printf("\nInvalid choice! Please try again\n");
+            }
+        }
+        input.nextLine();
+        return choice;
 	}
 	
 	public boolean haveConsumables()
@@ -114,40 +137,59 @@ public class Inventory
 				System.out.println(k+1 + ") " + equipments.get(k).getName());
 			}
 		}
-		else
-			System.out.println("No Equipment!");
 	}
 	
 	public void useItems(DungeonCharacter[] heroes)
 	{
 		int choice = -1;
 		Scanner kb = new Scanner(System.in);
+        System.out.println("Would you like to use an item or equip something?\n1)Item\n2)Equip\n0)Exit");
 		while (choice != 0)
 		{
-			System.out.println("Would you like to use an item or equip something?\n1)Item\n2)Equip\n0)Exit");
-			System.out.printf(">");
-			choice = kb.nextInt();
-			if (choice == 0)
-				return;
-			if (choice == 1 && haveConsumables())
-			{
-				System.out.println("Items in Inventory:");
-				printConsumables();
-				
-				int item = (selectItem(kb) - 1);
-				System.out.println("Who do you want to use it on?");
-				int hero = CharacterPrint.getInstance().singleCharacterSelect(heroes);
-				consume(item,heroes[hero]);
-			}
-			else if(choice == 2 && haveEquipment())
-			{
-				System.out.println("Equipment in Inventory:");
-				printEquipment();
-				int item = (selectEquip(kb) - 1);
-				System.out.println("Who do you want to equip it to?");
-				int hero = CharacterPrint.getInstance().singleCharacterSelect(heroes);
-				equipPartyMember((Hero) heroes[hero],item);
-			}
+            try {
+                System.out.printf(">");
+                choice = kb.nextInt();
+                if (choice == 0)
+                    return;
+                if (choice == 1 && haveConsumables()) {
+                    System.out.println("Items in Inventory:");
+                    printConsumables();
+                    System.out.println("0) Exit");
+
+                    int item = (selectItem(kb) - 1);
+                    if(item == -1)
+                    {
+                        choice = 0;
+                        return;
+                    }
+                    else {
+                        int hero = CharacterPrint.getInstance().singleCharacterSelect(heroes);
+                        consume(item, heroes[hero]);
+                    }
+                } else if (choice == 2) {
+                    System.out.println("Equipment in Inventory:");
+                    if(!haveEquipment()) {
+                        System.out.println("No Equipment!");
+                        return;
+                    }
+                    printEquipment();
+                    System.out.println("0) Exit");
+                    int item = (selectEquip(kb) - 1);
+                    if(item == -1)
+                    {
+                        choice = 0;
+                        return;
+                    }
+                    else {
+                        int hero = CharacterPrint.getInstance().singleCharacterSelect(heroes);
+                        equipPartyMember((Hero) heroes[hero], item);
+                    }
+                }
+            }catch(InputMismatchException e)
+            {
+                kb.nextLine();
+                System.out.printf("\nInvalid choice! Please try again\n");
+            }
 		}
 	}
 

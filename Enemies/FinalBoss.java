@@ -14,10 +14,10 @@ public class FinalBoss extends Enemy
 	
 	public FinalBoss(Stats stats)
 	{
-		super("Dread King", stats);
+		super("Dread Lord", stats);
 
 		attacktype = new Slash();
-		special = new ColdRay();
+		bossSpecial = new ColdRay();
 		special = new Rage();
 		this.setExp(500); //don't think this matters since you win, haha
 	}

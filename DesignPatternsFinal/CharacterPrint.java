@@ -1,6 +1,7 @@
 package DesignPatternsFinal;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CharacterPrint
@@ -31,7 +32,7 @@ public class CharacterPrint
 		System.out.println(declaration + ":");
         for(int i = 0; i < heroes.length; i++)
         {
-            System.out.println(heroes[i].getName() + "  HP: " + heroes[i].getHealth() + "/" + heroes[i].getMaxHealth() + "\tSTAM: " + heroes[i].getStamina());
+            System.out.println(heroes[i].getName() + "  HP: " + heroes[i].getHealth() + "/" + heroes[i].getMaxHealth() + "\tSTAM: " + heroes[i].getStamina() + "/" + heroes[i].getMaxStamina());
         }
 	}
 	
@@ -46,11 +47,16 @@ public class CharacterPrint
 				System.out.println((i + 1) + ") " + heroes[i].getName());
 			}
 			System.out.printf(">");
-			choice = myScanner.nextInt();
-			if ((choice - 1) < 0 || (choice - 1) > heroes.length)
-			{
-				System.out.println("Please Select Again");
-			}
+            try {
+                choice = myScanner.nextInt();
+                if ((choice - 1) < 0 || (choice - 1) > heroes.length) {
+                    System.out.println("Please Select Again");
+                }
+            }catch(InputMismatchException e)
+            {
+                System.out.println("Please Select Again");
+                choice = -1;
+            }
 		}
 		return choice - 1;
 	}
@@ -60,75 +66,72 @@ public class CharacterPrint
 		DungeonCharacter temp = order[x];
 		int selector = Arrays.asList(heroes).indexOf(temp);
 		int choice = -1;
-		while(choice == -1)
-		{
-			System.out.println("Select a target");
-			int i = 0;
-			for (i = 0; i < enemies.length; i++)
-			{
-				System.out.print(i + 1 + ": " + enemies[i].getName());
-				if (enemies[i].isAlive())
-					System.out.println(" Status: Alive");
-				else
-					System.out.println(" Status: Dead");
-			}
-			System.out.println(i + 1 + ": Select Ally");
-			System.out.printf(">");
-			choice = myScanner.nextInt();
-			
-			while (choice > (enemies.length + 1) || choice < 1)
-			{
-				System.out.println("Invalid, pick again");
-				choice = myScanner.nextInt();
-			}
-			if (choice != i + 1)
-			{
-				return Arrays.asList(order).indexOf(enemies[choice - 1]);
-			}
-			else
-			{
-				int j;
-				for (j = 0; j < heroes.length; j++)
-				{
-					if (j == selector)
-					{
-						System.out.println(j + 1 + ": Self");
-					}
-					else
-					{
-						System.out.print(j + 1 + ": " + heroes[j].getName());
-						if (heroes[j].isAlive())
-							System.out.println(" Status: Alive");
-						else
-							System.out.println(" Status: Dead");
-					}
-				}
-				System.out.println(j + 1 + ": Select Enemy");
-				System.out.printf(">");
-				choice = myScanner.nextInt();
-				while (choice > (heroes.length + 1) || choice < 1)
-				{
-					System.out.println("Invalid, pick again");
-					choice = myScanner.nextInt();
-				}
-				if (choice != j + 1)
-				{
-					return Arrays.asList(order).indexOf(heroes[choice - 1]);
-				}
-				else
-				{
-					choice = -1;
-				}
-			}
-		}
-		
+		while(choice == -1) {
+            try {
+                System.out.println("Select a target");
+                int i = 0;
+                for (i = 0; i < enemies.length; i++) {
+                    System.out.print(i + 1 + ": " + enemies[i].getName());
+                    if (enemies[i].isAlive())
+                        System.out.println(" Status: Alive");
+                    else
+                        System.out.println(" Status: Dead");
+                }
+                System.out.println(i + 1 + ": Select Ally");
+                System.out.printf(">");
+                choice = myScanner.nextInt();
+
+                while (choice > (enemies.length + 1) || choice < 1) {
+                    System.out.println("Invalid, pick again");
+                    choice = myScanner.nextInt();
+                }
+                if (choice != i + 1) {
+                    return Arrays.asList(order).indexOf(enemies[choice - 1]);
+                } else {
+                    int j;
+                    for (j = 0; j < heroes.length; j++) {
+                        if (j == selector) {
+                            System.out.println(j + 1 + ": Self");
+                        } else {
+                            System.out.print(j + 1 + ": " + heroes[j].getName());
+                            if (heroes[j].isAlive())
+                                System.out.println(" Status: Alive");
+                            else
+                                System.out.println(" Status: Dead");
+                        }
+                    }
+                    System.out.println(j + 1 + ": Select Enemy");
+                    System.out.printf(">");
+                    choice = myScanner.nextInt();
+                    while (choice > (heroes.length + 1) || choice < 1) {
+                        System.out.println("Invalid, pick again");
+                        choice = myScanner.nextInt();
+                    }
+                    if (choice != j + 1) {
+                        return Arrays.asList(order).indexOf(heroes[choice - 1]);
+                    } else {
+                        choice = -1;
+                    }
+                }
+
+            }catch(InputMismatchException e) {
+                if (myScanner.nextLine().toLowerCase().equals("exit")) {
+                    System.out.println("Exiting...");
+                    System.exit(1);
+                }
+                myScanner.nextLine();
+                System.out.println("Invalid, pick again");
+                choice = -1;
+            }
+
+        }//end while
 		return choice - 1;
 	}
 
 	public static void printOrder(DungeonCharacter[] order, int x)
 	{
 		System.out.println();
-		System.out.println("Order");
+		System.out.println("Initiative Order");
 		if (order[x].isAlive())
 		{
 			for (int i = 0; i < order.length; i++)

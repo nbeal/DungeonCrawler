@@ -18,9 +18,11 @@ public class Game
     private static int 		_clearedChance = 5;    //chance of encounter in checked room
 
     private static int 		_keys;
+    private static int 		_won;
     private static Room[] 	_rooms;
     private static Menu 	_menu;
     private static Room 	_current;
+    private static boolean  _playAgain;
     private static boolean 	_exit;
     private static boolean  _seen;
     private static boolean	_alive;
@@ -43,6 +45,7 @@ public class Game
         _seen    = true;
         _alive	 = true;
         _keys	 = 0;
+        _won     = 0;
         _previous= "south";
 
         inventory.addItem(new HealthPotion());
@@ -50,28 +53,39 @@ public class Game
         inventory.addItem(new FirePotion());
     }
 
-    public static void main(String[] args)
+    public static void runGame()
     {
-        initialize();
-        String input, userInput;
-
         Scanner scanner = new Scanner(System.in);
+        _playAgain = true;
+        while(_playAgain) {
+            initialize();
+            String input, userInput;
 
-        selectHeroes(scanner);
-        System.out.println();
+            selectHeroes(scanner);
+            System.out.println();
 
-        while(!_exit && _alive)
-        {
-            if(_seen)
-            {
-                System.out.printf(/*"\nCurrent room id is " + _current.getID() + ". " +*/ _current.getDescription() + " You came from the " + _previous + ". ");
-                if(_current.getKey() != 0) { System.out.printf("There appears to be a shiny key in the corner."); }
-                _seen = false;
+            while (!_exit && _alive && _won == 0) {
+                if (_seen) {
+                    System.out.printf(/*"\nCurrent room id is " + _current.getID() + ". " +*/ _current.getDescription() + " You came from the " + _previous + ". ");
+                    if (_current.getKey() != 0) {
+                        System.out.printf("There appears to be a shiny key in the corner.");
+                    }
+                    _seen = false;
+                }
+                System.out.printf("\n\nWhat would you like to do?\n> ");
+                input = scanner.nextLine();
+                userInput = _menu.handleCommand(input);
+                checkCommand(userInput);
             }
-            System.out.printf("\n\nWhat would you like to do?\n> ");
-            input = scanner.nextLine();
-            userInput = _menu.handleCommand(input);
-            checkCommand(userInput);
+            if (_won != 1)
+            {
+                System.out.println("Exiting...");
+                _playAgain = false;
+            }
+            else
+            {
+                playAgain(scanner);
+            }
         }
         scanner.close();
     }
@@ -85,6 +99,7 @@ public class Game
 
         for(int k = 0; k < 4; k++)
         {
+            System.out.println("Party Member " + (k+1) + "/4");
             int choice = 0;
             for(int j = 1; j <= possibleHeroes.length; j++)
             {
@@ -123,7 +138,7 @@ public class Game
             _exit = true;
             return;
         }
-        else if(userInput.equals("status"))  //ADD STATUS HP/STAMINA OF PARTY
+        else if(userInput.equals("status"))
         {
             System.out.println("\nYou have " + _keys + " key(s).");
             CharacterPrint.getInstance().StatusPrint(heroes, "Party");
@@ -138,6 +153,12 @@ public class Game
         		System.out.println();
         	}
         	return;
+        }
+        else if(userInput.equals("room"))
+        {
+            System.out.printf( _current.getDescription() + " You came from the " + _previous + ". ");
+            return;
+
         }
         else if(userInput.equals("level"))
         {
@@ -207,6 +228,8 @@ public class Game
         //Boss Battle
         if(_current.getID().equals("25"))
         {
+            Battle battle = new Battle(heroes, inventory, 1);
+            _won = battle.startBossBattle();
             return;
         }
 
@@ -285,12 +308,26 @@ public class Game
             return;
         }
 
-        if(_current.getID().equals("23") && _current.getLocked() != 0 && _keys == 1)
+        if(_current.getID().equals("17") && _current.getLocked() != 0 && _keys == 1)
         {
-            System.out.println("\nYou notice multiple locks on the door. You need another key.");
+            System.out.println("\nYou notice two locks on the door. You need another key.");
             return;
         }
-        if(_current.getID().equals("23") && _current.getLocked() != 0 && _keys > 1)
+        if(_current.getID().equals("17") && _current.getLocked() != 0 && _keys > 1)
+        {
+            System.out.println("\nYou unlock the door...");
+            statFact.levelUpAll(10, 5, 5, 10, 5);
+            _current.setLocked("0");
+            return;
+        }
+
+
+        if(_current.getID().equals("23") && _current.getLocked() != 0 && _keys <= 2)
+        {
+            System.out.println("\nYou notice three locks on the door. You need another key.");
+            return;
+        }
+        if(_current.getID().equals("23") && _current.getLocked() != 0 && _keys > 2)
         {
             System.out.println("\nYou unlock the multiple locks on the door...");
             statFact.levelUpAll(10, 5, 5, 10, 5);
@@ -337,9 +374,18 @@ public class Game
     	System.out.println("								  | |      | (\\ (      ) (   | (         | |");
     	System.out.println("								  | (____/\\| ) \\ \\__   | |   | )         | |");
     	System.out.println("								  (_______/|/   \\__/   \\_/   |/          )_( ");
-    	System.out.println();
+        System.out.println();
+        System.out.println("						--Copyright © 2015 Kevin Murray, Nicholas Valentine, & Nathan Beal--\n");
 
         System.out.println("You and your party have started on your great quest to rid the halls of the Dread Lord Crypt of evil. You entered the long sealed doors and when you stepped in, the doors slammed shut sealing you in with the evil within.");
     }
 
+    public static void playAgain(Scanner scanner) {
+        System.out.printf("\nWould you like to play again? (y/n)\n>");
+        String input = scanner.nextLine();
+
+        if(input.toLowerCase().equals("y"))
+            return;
+        _playAgain = false;
+    }
 }
