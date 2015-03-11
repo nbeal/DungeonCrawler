@@ -1,5 +1,20 @@
 <?xml version="1.0"?>
 <items>
+	<Paladin>
+		<value1>WEAPON~0~5~DAMAGE_NORMAL,5~0~1~Iron Sword~Slash</value1>
+	</Paladin>
+	<Wizard>
+		<value1>WEAPON~0~1~DAMAGE_NORMAL,2~0~.9~Wooden Staff~Wack</value1>
+	</Wizard>
+	<Cleric>
+		<value1>WEAPON~0~4~DAMAGE_NORMAL,5~0~1~Wooden Club~Smash</value1>
+	</Cleric>
+	<Ranger>
+		<value1>WEAPON~0~3~DAMAGE_NORMAL,2~2~1~Small Bow~Shoot</value1>
+	</Ranger>
+	<Barbarian>
+		<value1>WEAPON~0~4~DAMAGE_NORMAL,5~0~1~Wooden Club~Smash</value1>
+	</Barbarian>
 	<equipment>
 		<!-- Armor example: ARMOR~Health~Stength~Dextarity~Stamina~Defense(1,5,2,6)~Name~type -->
 		<!-- Weapon example: WEAPON~Health~Stength~Attack(1,5,2,6)~Dextarity~Stamina~Name~AttackType -->

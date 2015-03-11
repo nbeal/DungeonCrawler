@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Attack.AttackType;
+import Attack.NullAttack;
+import Attack.NullSpecialAttack;
 import Attack.SpecialAttack;
 import Equipment.Equipment;
 import Equipment.NullEquipment;
@@ -23,9 +25,9 @@ public abstract class DungeonCharacter
 	private String name = "";
 	private String title;
 	
-	protected AttackType attacktype;
-	protected SpecialAttack special;
-    protected SpecialAttack bossSpecial;
+	protected AttackType attacktype = new NullAttack();
+	protected SpecialAttack special = new NullSpecialAttack();
+    protected SpecialAttack bossSpecial = new NullSpecialAttack();
 	
 	
 	protected Equipment head = new NullEquipment();

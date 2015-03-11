@@ -101,7 +101,6 @@ public class EquipmentFactory
 			
 			try
 			{
-				//int equipment = 1 + (int) (Math.random() * (totalEquipment - 1));
 		        NodeList nodeLst = equipmentFile.getElementsByTagName(target);
 		        
 		        Node fstNode = nodeLst.item(0);
