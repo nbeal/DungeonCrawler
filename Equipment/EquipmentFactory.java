@@ -14,7 +14,7 @@ public class EquipmentFactory
 {
 	private static final int totalEquipment = 26;
 	private static EquipmentFactory instance = null;
-	private static String fileName = "\\Users\\Sapphire\\Documents\\DesignPatternsFinal\\Final\\src\\MyXMLFile.xml";
+	private static String fileName = "MyXMLFile.xml";
 	private static Document equipmentFile;
 	private static boolean valid = false;
 	

@@ -236,8 +236,14 @@ public class Battle
 
 	private DungeonCharacter[] concat(DungeonCharacter[] heroes, DungeonCharacter[] enemies)
 	{
+		int enemyCount = 0;
+		for (int i = 0; i < enemies.length;i++)
+		{
+			if (enemies[i].isAlive())
+				enemyCount++;
+		}
 		
-		DungeonCharacter[] temp = new DungeonCharacter[heroes.length + enemies.length];
+		DungeonCharacter[] temp = new DungeonCharacter[heroes.length + enemyCount];
 		int x = 0;
 		for (int i = 0; i < heroes.length; i++)
 		{
