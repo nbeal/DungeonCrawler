@@ -20,15 +20,21 @@ public class EnemyFactory implements CharacterFactory
 		else
 		if(name.equals("Giant Spider"))
 			return new GiantSpider(new Stats("GiantSpider"));
-
-		return null;
-	}
-	
-	public DungeonCharacter orderBos(String name)
-	{
-		
-		if(name.equals("Dread Lord"))
-			return new FinalBoss(new Stats("Dread Lord"));
+        else
+        if(name.equals("Skeleton"))
+            return new Skeleton(new Stats("Skeleton"));
+        else
+        if(name.equals("Orc"))
+            return new Orc(new Stats("Orc"));
+        else
+        if(name.equals("Zombie"))
+            return new Zombie(new Stats("Zombie"));
+        else
+        if(name.equals("Cave Troll"))
+            return new CaveTroll(new Stats("CaveTroll"));
+        else
+        if(name.equals("Dread Lord"))
+            return new FinalBoss(new Stats("Dread Lord"));
 
 		return null;
 	}

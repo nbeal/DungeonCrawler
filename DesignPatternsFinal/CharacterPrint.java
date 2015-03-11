@@ -31,7 +31,7 @@ public class CharacterPrint
 		System.out.println(declaration + ":");
         for(int i = 0; i < heroes.length; i++)
         {
-            System.out.println(heroes[i].getName() + "  HP: " + heroes[i].getHealth() + "/" + heroes[i].getMaxHealth() + "\tSTAM: " + heroes[i].getStamina());
+            System.out.println(heroes[i].getName() + "  HP: " + heroes[i].getHealth() + "/" + heroes[i].getMaxHealth() + "\tSTAM: " + heroes[i].getStamina() + "/" + heroes[i].getMaxStamina());
         }
 	}
 	

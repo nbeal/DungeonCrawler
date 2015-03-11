@@ -30,6 +30,11 @@
 		<value23>WEAPON~0~2~DAMAGE_PIERCE,8~12~1~Iron Dagger</value23>
 		<value24>WEAPON~0~10~DAMAGE_NORMAL,9~4~1~GiantHammer</value24>
 		<value25>WEAPON~0~4~DAMAGE_NORMAL,4~5~1~Recurve Bow</value25>
-		<value26>ARMOR~0~0~13~.5~DAMAGE_NORMAL,-2,DAMAGE_FIRE,-2,DAMAGE_COLD,-2~Shoes of stamina reduction~feet</value26>	
+        <value26>WEAPON~0~3~DAMAGE_PIERCE,5~5~.5~Rapier</value26>
+        <value27>WEAPON~0~6~DAMAGE_NORMAL,8~3~1~Katana</value27>
+        <value28>WEAPON~0~10~DAMAGE_NORMAL,10~4~1~War Axe</value28>
+		<value29>ARMOR~0~0~13~.5~DAMAGE_NORMAL,-2,DAMAGE_FIRE,-2,DAMAGE_COLD,-2~Shoes of Stamina Reduction~feet</value29>
+        <value12>ARMOR~0~1~0~1~DAMAGE_NORMAL,6,DAMAGE_COLD,4~Mithral Chainmaille~torso</value12>
+        <value12>ARMOR~20~0~0~1~DAMAGE_NORMAL,0,DAMAGE_COLD,0~Helm of Health~head</value12>
 	</equipment>
 </items>

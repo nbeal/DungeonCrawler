@@ -14,7 +14,7 @@ public class EquipmentFactory
 {
 	private static final int totalEquipment = 26;
 	private static EquipmentFactory instance = null;
-	private static String fileName = "MyXMLFile.xml";
+	private static String fileName = "\\Users\\Sapphire\\Documents\\DesignPatternsFinal\\Final\\src\\MyXMLFile.xml";
 	private static Document equipmentFile;
 	private static boolean valid = false;
 	
@@ -53,7 +53,8 @@ public class EquipmentFactory
 		}
 	    catch (Exception e) 
 			{
-		        e.printStackTrace();
+                System.out.println("Cannot find xml for equipment!");
+                System.exit(-1);
 		    }
 	}
 		

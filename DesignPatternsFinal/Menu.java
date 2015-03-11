@@ -48,13 +48,17 @@ public class Menu
             case "status":
                 return userInput;
 
+            case "description":
+                userInput = "room";
+            case "room":
+                return userInput;
+
 			case "take":
 			    userInput = "get";
-			
 			case "get":
 			    return userInput;
 
-            case "inv":		//drop down to modification	    
+            case "inv":
 			case "stuff":
                 userInput = "inventory";                
             case "inventory":
@@ -67,12 +71,11 @@ public class Menu
 				return userInput;
 			    
             case "exit":
-				System.out.println("\nExiting...");
 				return userInput;
 			
 			case "help":
 				System.out.println("\nPossible Commands:");
-				System.out.println("north\nwest\nsouth\neast\nstatus\ninventory/inv/stuff\nunlock\nget/pick up/take\nlevel / level up\nexit\nhelp");
+				System.out.println("north/west/south/east\nstatus\nroom/description\ninventory/inv/stuff\nunlock\nget/pick up/take\nlevel/level up\nexit\nhelp");
 				return null;
 				
 			default:

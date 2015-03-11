@@ -18,12 +18,14 @@ public abstract class DungeonCharacter
 	private int strength;
 	private int dexterity;
 	private int stamina;
+    private int MaxStamina;
 	private int[] defenses;
 	private String name = "";
 	private String title;
 	
 	protected AttackType attacktype;
 	protected SpecialAttack special;
+    protected SpecialAttack bossSpecial;
 	
 	
 	protected Equipment head = new NullEquipment();
@@ -47,6 +49,7 @@ public abstract class DungeonCharacter
 		this.strength = 0;
 		this.dexterity = 0;
 		this.stamina = 0;
+        this.MaxStamina = 0;
 		
 		this.defenses = DamageHandler.fillArray("");
 		
@@ -67,6 +70,7 @@ public abstract class DungeonCharacter
 		this.strength = stats[1];
 		this.dexterity = stats[2];
 		this.stamina = stats[3];
+        this.MaxStamina = stats[3];
 		
 		String def = "" + DamageHandler.getInstance().DAMAGE_NORMAL;
 		def = def + "," + stats[4];
@@ -88,6 +92,7 @@ public abstract class DungeonCharacter
 		this.strength = str;
 		this.dexterity = dex;
 		this.stamina = stam;
+        this.MaxStamina = stam;
 		
 		String sdef = "" + DamageHandler.getInstance().DAMAGE_NORMAL;
 		sdef = sdef + "," + def;
@@ -133,6 +138,23 @@ public abstract class DungeonCharacter
 		return 1234567;
 		
 	}
+
+    public int bossSpecial(DungeonCharacter defender)
+    {
+        int stamUsed = special.getStamUsed();
+        if(getStamina() >= stamUsed)
+        {
+            modifyStamina(stamUsed);
+            //return special.attack(defender);
+
+            String attack = special.attack();
+            int[] damage = DamageHandler.fillArray(attack);
+            return defender.modifyHealth(damage);
+        }
+        //System.out.println("Not enough stamina to use");
+        return 1234567;
+
+    }
 	
 	public int modifyHealth(int[] damage)
 	{
@@ -404,4 +426,8 @@ public abstract class DungeonCharacter
 	{
 		return this.MaxHealth;
 	}
+    public int getMaxStamina()
+    {
+        return this.MaxStamina;
+    }
 }
