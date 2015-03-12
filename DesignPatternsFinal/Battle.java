@@ -13,13 +13,20 @@ public class Battle
 		this.heroes = heroes;
 		this.inventory= inventory;
 		
-		CharacterFactory enFact = new EnemyFactory();
-		DungeonCharacter monster1 = enFact.order("Blob");
+		EnemyFactory enFact = new EnemyFactory();
+		
+		/*
+		  DungeonCharacter monster1 = enFact.order("Blob");
+
 		DungeonCharacter monster2 = enFact.order("Blob");
 		DungeonCharacter monster3 = enFact.order("Blob");
 		
 		
+		
 		enemies = new DungeonCharacter[] {monster1, monster2, monster3};
+		*/
+		
+		enemies = enFact.getRandomEnemies(inventory.getKeys());
 	}
     public Battle(DungeonCharacter[] heroes, Inventory inventory, int boss) //Boss Battle
     {

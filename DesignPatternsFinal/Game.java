@@ -140,7 +140,7 @@ public class Game
         }
         else if(userInput.equals("status"))
         {
-            System.out.println("\nYou have " + _keys + " key(s).");
+            System.out.println("\nYou have " + inventory.getKeys() + " key(s).");
             CharacterPrint.getInstance().StatusPrint(heroes, "Party");
             return;
         }
@@ -173,7 +173,7 @@ public class Game
             {
                 System.out.println("\nPicking up key...");
                 _current.setKey("0");
-                _keys++;
+                inventory.addKey();
                 return;
             }
             System.out.println("\nNothing to pick up...");
@@ -296,7 +296,7 @@ public class Game
     private static void tryUnlock()
     {
     	StatsFactory statFact = StatsFactory.getStatFact();
-        if(_keys == 0) {
+        if(inventory.getKeys() == 0) {
             System.out.println("\nYou need a key to do this action!");
             return;
         }
@@ -308,12 +308,12 @@ public class Game
             return;
         }
 
-        if(_current.getID().equals("17") && _current.getLocked() != 0 && _keys == 1)
+        if(_current.getID().equals("17") && _current.getLocked() != 0 && inventory.getKeys() == 1)
         {
             System.out.println("\nYou notice two locks on the door. You need another key.");
             return;
         }
-        if(_current.getID().equals("17") && _current.getLocked() != 0 && _keys > 1)
+        if(_current.getID().equals("17") && _current.getLocked() != 0 && inventory.getKeys() > 1)
         {
             System.out.println("\nYou unlock the door...");
             statFact.levelUpAll(10, 5, 5, 10, 5);
@@ -322,19 +322,19 @@ public class Game
         }
 
 
-        if(_current.getID().equals("23") && _current.getLocked() != 0 && _keys <= 2)
+        if(_current.getID().equals("23") && _current.getLocked() != 0 && inventory.getKeys() <= 2)
         {
             System.out.println("\nYou notice three locks on the door. You need another key.");
             return;
         }
-        if(_current.getID().equals("23") && _current.getLocked() != 0 && _keys > 2)
+        if(_current.getID().equals("23") && _current.getLocked() != 0 && inventory.getKeys() > 2)
         {
             System.out.println("\nYou unlock the multiple locks on the door...");
             statFact.levelUpAll(10, 5, 5, 10, 5);
             _current.setLocked("0");
             return;
         }
-        if(_keys > 0) {
+        if(inventory.getKeys() > 0) {
             System.out.println("\nThere is nothing to unlock...");
             return;
         }

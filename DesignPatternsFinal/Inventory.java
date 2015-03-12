@@ -13,18 +13,24 @@ public class Inventory
 {
 	private ArrayList<Item> consumables = new ArrayList<Item>();
 	private ArrayList<Item> equipments = new ArrayList<Item>();
+	private int key;
 	
 	private static Inventory playerInventory;
 	
 	int numConsumables = 0;
 	int numEquipment = 0;
 	
-	private Inventory(){};
+	private Inventory()
+	{
+		key = 0;
+	}
 	
 	public static Inventory getInventory()
 	{
 		if(playerInventory == null)
+		{
 			return new Inventory();
+		}
 		
 		return playerInventory;
 	}
@@ -44,6 +50,16 @@ public class Inventory
 		else
 			equipments.add(item);
 		
+	}
+	
+	public void addKey()
+	{
+		key++;
+	}
+	
+	public int getKeys()
+	{
+		return key;
 	}
 	
 	public void consume(int index, DungeonCharacter entity)
