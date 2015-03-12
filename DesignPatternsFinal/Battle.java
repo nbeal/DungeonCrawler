@@ -64,7 +64,7 @@ public class Battle
 					if (order[x].isAlive())
 					{
 						CharacterPrint.printOrder(order, x);
-						int damage = 0;
+						double damage = 0;
 						int item = 0;
 						//Select Action
 						
@@ -333,10 +333,15 @@ public class Battle
                 {
                     if (order[x].isAlive())
                     {
-                        int damage = 0;
+                        double damage = 0;
                         int item = 0;
                         //Select Action
-
+                        if(!order[x].isHero())
+                        {
+                        	System.out.println("------------------------------------------------------------------");
+                        	System.out.println("ENEMY ATTACK");
+                        	System.out.println("-----------------------------------------------------------------");
+                        }
                         if(order[x].isHero())
                         {
                             System.out.println("-----------------------------------------------------------------");

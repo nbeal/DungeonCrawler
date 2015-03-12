@@ -375,7 +375,7 @@ public class Game
     	System.out.println("								  | (____/\\| ) \\ \\__   | |   | )         | |");
     	System.out.println("								  (_______/|/   \\__/   \\_/   |/          )_( ");
         System.out.println();
-        System.out.println("						--Copyright Â© 2015 Kevin Murray, Nicholas Valentine, & Nathan Beal--\n");
+        System.out.println("						--Copyright © 2015 Kevin Murray, Nicholas Valentine, & Nathan Beal--\n");
 
         System.out.println("You and your party have started on your great quest to rid the halls of the Dread Lord Crypt of evil. You entered the long sealed doors and when you stepped in, the doors slammed shut sealing you in with the evil within.");
     }

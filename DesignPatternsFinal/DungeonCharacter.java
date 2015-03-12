@@ -120,7 +120,7 @@ public abstract class DungeonCharacter
 		name = n;
 	}
 	
-	public int attack(DungeonCharacter defender)
+	public double attack(DungeonCharacter defender)
 	{
 		String attack = attacktype.attack();
 		int[] damage = DamageHandler.fillArray(attack);
@@ -132,7 +132,7 @@ public abstract class DungeonCharacter
 		//return attacktype.attack(defender);
 	}
 	
-	public int special(DungeonCharacter defender)
+	public double special(DungeonCharacter defender)
 	{		
 		int stamUsed = special.getStamUsed();
 		if(getStamina() >= stamUsed)
@@ -149,7 +149,7 @@ public abstract class DungeonCharacter
 		
 	}
 
-    public int bossSpecial(DungeonCharacter defender)
+    public double bossSpecial(DungeonCharacter defender)
     {
         int stamUsed = special.getStamUsed();
         if(getStamina() >= stamUsed)
@@ -166,10 +166,10 @@ public abstract class DungeonCharacter
 
     }
 	
-	public int modifyHealth(int[] damage)
+	public double modifyHealth(int[] damage)
 	{
 		int[] mydefense = totalDefense();
-		int hitDamage = DamageHandler.damageCalculation(mydefense , damage);
+		double hitDamage = DamageHandler.damageCalculation(mydefense , damage);
 		this.hitPoints -= hitDamage;
 		
 		if(this.hitPoints < 0)

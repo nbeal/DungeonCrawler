@@ -75,14 +75,14 @@ public class DamageHandler
 		return Array;
 	}
 	
-	public static int damageCalculation( int[] defender, int[] Damages)
+	public static double damageCalculation( int[] defender, int[] Damages)
 	{
-		int damageTaken = Math.max(0, Damages[DAMAGE_NORMAL] - defender[DAMAGE_NORMAL] * 1);
-		damageTaken += Math.max(0, Damages[DAMAGE_PIERCE] - defender[DAMAGE_PIERCE] * 1);
-		damageTaken += Math.max(0, Damages[DAMAGE_FIRE] - defender[DAMAGE_FIRE] * 1);
-		damageTaken += Math.max(0, Damages[DAMAGE_WATER] - defender[DAMAGE_WATER] * 1);
-		damageTaken += Math.max(0, Damages[DAMAGE_ELEC] - defender[DAMAGE_ELEC] * 1);
-		damageTaken += Math.max(0, Damages[DAMAGE_COLD] - defender[DAMAGE_COLD] * 1);
+		double damageTaken = Math.max(0, Damages[DAMAGE_NORMAL] - defender[DAMAGE_NORMAL] * .5);
+		damageTaken += Math.max(0, Damages[DAMAGE_PIERCE] - defender[DAMAGE_PIERCE] * .5);
+		damageTaken += Math.max(0, Damages[DAMAGE_FIRE] - defender[DAMAGE_FIRE] * .5);
+		damageTaken += Math.max(0, Damages[DAMAGE_WATER] - defender[DAMAGE_WATER] * .5);
+		damageTaken += Math.max(0, Damages[DAMAGE_ELEC] - defender[DAMAGE_ELEC] * .5);
+		damageTaken += Math.max(0, Damages[DAMAGE_COLD] - defender[DAMAGE_COLD] * .5);
 		return damageTaken;
 	}
 
