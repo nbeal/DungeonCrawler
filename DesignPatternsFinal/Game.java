@@ -14,7 +14,7 @@ import Heroes.HeroFactory;
 //Main Game Starter
 public class Game
 {
-    private static int 		_encounterChance = 100; //chance of encounter in unchecked room
+    private static int 		_encounterChance = 80; //chance of encounter in unchecked room
     private static int 		_clearedChance = 5;    //chance of encounter in checked room
 
     private static int 		_keys;

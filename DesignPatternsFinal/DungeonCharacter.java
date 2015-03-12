@@ -107,6 +107,14 @@ public abstract class DungeonCharacter
 		this.points = 0;
 	}
 	
+	public void addMaxHealth(int h)
+	{
+		
+		MaxHealth += h;
+		if(hitPoints > MaxHealth)
+			hitPoints = MaxHealth;
+	}
+	
 	public void setName(String n)
 	{
 		name = n;
