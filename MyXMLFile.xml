@@ -43,8 +43,12 @@
 		<value21>WEAPON~0~5~DAMAGE_NORMAL,5~0~1~Iron Sword~Slash</value21>
 		<value22>WEAPON~0~3~DAMAGE_NORMAL,-2~2~.5~Oak Staff~Wack</value22>
 		<value23>WEAPON~0~2~DAMAGE_PIERCE,8~12~1~Iron Dagger~Stab</value23>
-		<value24>WEAPON~0~10~DAMAGE_NORMAL,9~4~1~GiantHammer~Smash</value24>
+		<value24>WEAPON~0~10~DAMAGE_NORMAL,9~4~1~Giant Hammer~Smash</value24>
 		<value25>WEAPON~0~4~DAMAGE_NORMAL,4~5~1~Recurve Bow~Shoot</value25>
-		<value26>ARMOR~0~0~13~.5~DAMAGE_NORMAL,-2,DAMAGE_FIRE,-2,DAMAGE_COLD,-2~Shoes of stamina reduction~feet</value26>	
+		<value26>ARMOR~0~0~13~.5~DAMAGE_NORMAL,-2,DAMAGE_FIRE,-2,DAMAGE_COLD,-2~Shoes of stamina reduction~feet</value26>
+        <value27>ARMOR~0~0~0~1~DAMAGE_NORMAL,6,DAMAGE_COLD,4~Mithral Chainshirt~torso</value27>
+        <value28>WEAPON~0~5~DAMAGE_NORMAL,10~4~1~Katana~Slash</value28>
+        <value28>WEAPON~0~2~DAMAGE_NORMAL,7~6~.5~Rapier~Stab</value28>
+        <value28>WEAPON~0~8~DAMAGE_NORMAL,10~4~1~War Axe~Slash</value28>
 	</equipment>
 </items>
