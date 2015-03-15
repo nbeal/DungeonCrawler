@@ -2,12 +2,14 @@ package Enemies;
 
 import java.util.Random;
 
+import Attack.NullSpecialAttack;
+import Attack.SpecialAttack;
 import DesignPatternsFinal.DungeonCharacter;
 import DesignPatternsFinal.Stats;
 
 public class Enemy extends DungeonCharacter
 {
-	
+    protected SpecialAttack bossSpecial = new NullSpecialAttack();
 	public Enemy()
 	{
 		super();

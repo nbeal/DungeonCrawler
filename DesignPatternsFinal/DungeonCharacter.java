@@ -27,7 +27,7 @@ public abstract class DungeonCharacter
 	
 	protected AttackType attacktype = new NullAttack();
 	protected SpecialAttack special = new NullSpecialAttack();
-    protected SpecialAttack bossSpecial = new NullSpecialAttack();
+
 	
 	
 	protected Equipment head = new NullEquipment();
