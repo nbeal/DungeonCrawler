@@ -168,8 +168,13 @@ public abstract class DungeonCharacter
 	
 	public double modifyHealth(int[] damage)
 	{
+		double hitDamage;
 		int[] mydefense = totalDefense();
-		double hitDamage = DamageHandler.damageCalculation(mydefense , damage);
+		if(damage[DamageHandler.DAMAGE_HEAL] == 0)
+			hitDamage = DamageHandler.damageCalculation(mydefense , damage);
+		else
+			hitDamage = damage[DamageHandler.DAMAGE_HEAL];
+		
 		this.hitPoints -= hitDamage;
 		
 		if(this.hitPoints < 0)

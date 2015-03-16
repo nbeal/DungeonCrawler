@@ -6,7 +6,7 @@ import DesignPatternsFinal.DungeonCharacter;
 public class FirePotion implements ConsumableItem
 {
 
-	int totDamage = 1;
+	double totDamage = 1;
 	@Override
 	public boolean isConsumable() 
 	{

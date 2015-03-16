@@ -83,6 +83,8 @@ public class DamageHandler
 		damageTaken += Math.max(0, Damages[DAMAGE_WATER] - defender[DAMAGE_WATER] * .5);
 		damageTaken += Math.max(0, Damages[DAMAGE_ELEC] - defender[DAMAGE_ELEC] * .5);
 		damageTaken += Math.max(0, Damages[DAMAGE_COLD] - defender[DAMAGE_COLD] * .5);
+		damageTaken += Math.max(0, Damages[DAMAGE_ACID] - defender[DAMAGE_ACID] * .5);
+		damageTaken += Math.max(0, Damages[DAMAGE_HEAL] - defender[DAMAGE_HEAL] * .5);
 		return damageTaken;
 	}
 
